@@ -1,0 +1,84 @@
+{
+  "lastModified": 1647243142165,
+  "title": "Luigi’s Mansion™ 3",
+  "description": "Luigi’s invited to the towering Last Resort hotel, but when Mario and friends go missing, our green-clad hero will have to conquer his fears to save them! Slam, blow away, and vacuum up ghosts with the all-new Poltergust G-00, and join forces with Gooigi to overcome the puzzling contraptions and mischievous boss on each themed floor. And that’s just the Last Resort. Enter the ScareScraper for 8-player local wireless** or online*** co-op gameplay. See if you can defeat all the ghosts, rescue all the toads, or clear other objectives before time runs out…in the ScareScraper! And for more mini-game madness, compete on teams at the ScreamPark! Whether you play with friends or wander the hotel alone, you’ll be sucked in by the atmospheric music and ghoulish décor of every cobwebby corner you explore. Why not take in the cinematic sights and sounds with a friend? In the main adventure, you and a friend can play together as Luigi and Gooigi in two-player co-op! Gooigi can walk on spikes, slip through tight spaces, and help Luigi overcome obstacles he can’t tackle alone. Never hurts to have a friend in this hotel; it may not be very spooky, but Luigi begs to differ! Catch ghosts and solve puzzles to rescue Mario and friends in the Last Resort hotel Each floor of this towering hotel is themed, from the décor to the puzzles to boss! Utilize the functions of the all-new Poltergust G-00: Pummel ghosts with a Slam, break through defenses with the Suction Shot, and blow back groups…",
+  "url": "/games/detail/luigis-mansion-3-switch/",
+  "nsuid": "70010000001620",
+  "slug": "luigis-mansion-3-switch",
+  "boxart": "https://assets.nintendo.com/image/upload/ncom/en_US/games/switch/l/luigis-mansion-3-switch/boxart",
+  "horizontalHeaderImage": "https://assets.nintendo.com/image/upload/ncom/en_US/games/switch/l/luigis-mansion-3-switch/hero",
+  "platform": "Nintendo Switch",
+  "releaseDateDisplay": "2019-10-31T07:00:00.000Z",
+  "esrbRating": "Everyone",
+  "numOfPlayers": "up to 8 players",
+  "featured": true,
+  "freeToStart": false,
+  "esrbDescriptors": [
+    "Comic Mischief",
+    "In-Game Purchases",
+    "Users Interact",
+    "Mild Cartoon Violence"
+  ],
+  "franchises": [
+    "Mario"
+  ],
+  "genres": [
+    "Action",
+    "Adventure"
+  ],
+  "publishers": [
+    "Nintendo"
+  ],
+  "developers": [
+    "Next Level Games"
+  ],
+  "generalFilters": [
+    "DLC available",
+    "Nintendo Switch Online compatible"
+  ],
+  "howToShop": [
+    "At retail",
+    "On Nintendo.com"
+  ],
+  "playerFilters": [
+    "1+",
+    "2+",
+    "3+",
+    "4+"
+  ],
+  "priceRange": "$40+",
+  "msrp": 59.99,
+  "salePrice": null,
+  "lowestPrice": 59.99,
+  "availability": [
+    "Available now"
+  ],
+  "objectID": "d40d6be8-cd72-4b3e-96b2-1e57bb93119a",
+  "_distinctSeqID": 0,
+  "_highlightResult": {
+    "title": {
+      "value": "Luigi’s Mansion™ 3",
+      "matchLevel": "none",
+      "matchedWords": [
+
+      ]
+    },
+    "nsuid": {
+      "value": "<em>70010000001</em>620",
+      "matchLevel": "full",
+      "fullyHighlighted": false,
+      "matchedWords": [
+        "70010000001"
+      ]
+    },
+    "publishers": [
+      {
+        "value": "Nintendo",
+        "matchLevel": "none",
+        "matchedWords": [
+
+        ]
+      }
+    ]
+  }
+}
