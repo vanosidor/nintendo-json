@@ -11,8 +11,8 @@ suspend fun main() {
     val startTime = System.currentTimeMillis()
 
 //    val euGames = StoreApiEU.fetchGames()
-//    val naGames = StoreApiNA.fetchGames()
-    val jpGames = StoreApiJP.fetchGames()
+    val naGames = StoreApiNA.fetchGames()
+//    val jpGames = StoreApiJP.fetchGames()
 //    val hkGames = StoreApiHK.fetchGames()
 
     println("Get all items completed successfully")

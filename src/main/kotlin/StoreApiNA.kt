@@ -8,6 +8,7 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.decodeFromJsonElement
 
 const val APPLICATION_ID = "U3B6GR4UA3"
@@ -54,6 +55,8 @@ class StoreApiNA {
                 val responseSearch =
                     index.search(Query("$PLATFORM_CODE$currentFormatted"), requestOptions = requestOptions)
 
+//                val withNsuid = responseSearch.hits.find { (it.json["nsuid"] as JsonPrimitive).content == "70010000013025"}
+
                 val games = responseSearch.hits.map {
                     json.decodeFromJsonElement<NaGameDto>(it.json)
                 }
@@ -89,6 +92,7 @@ data class NaGameDto(
     val title: String?,
     val description: String?,
     val url: String?,
+    val productCode: String?, // now product code absent for NOA store
     val nsuid: String?,
     val slug: String?,
     @SerialName("numOfPlayers") val players: String?, // "up to 8 players"

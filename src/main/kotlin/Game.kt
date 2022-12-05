@@ -60,20 +60,16 @@ data class Game(
             )
         }
 
-        //        TODO make
         fun fromNaDto(naGame: NaGameDto): Game {
 
-
-//            TODO check regexp and fix
-            Regex("[^d]*").find(naGame.players.toString())?.value
+            val players = Regex("[^\\d]*").replace(naGame.players.toString(), "").toInt()
 
             return Game(
                 title = naGame.title ?: "",
                 description = naGame.description ?: "",
                 nsuid = naGame.nsuid ?: "",
                 productCode = "",
-//                TODO
-                players = 0,
+                players = players,
 //                TODO
                 storeUrl = "",
                 regionCode = RegionCode.NA,
@@ -81,8 +77,8 @@ data class Game(
                 imageUrl = "",
                 imageUrl2x1 = "",
 //                TODO
-                languages =  emptyList(),
-                categories =  emptyList(),
+                languages = emptyList(),
+                categories = emptyList(),
             )
         }
 
