@@ -33,5 +33,5 @@ dependencies {
     implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
     implementation("io.ktor:ktor-client-logging:$ktor_version")
-    implementation("com.algolia:algoliasearch-client-kotlin:2.0.0")
+    implementation("com.algolia:algoliasearch-client-kotlin:2.1.1")
 }

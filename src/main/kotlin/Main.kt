@@ -10,11 +10,10 @@
 suspend fun main() {
     val startTime = System.currentTimeMillis()
 
-    val usGames = StoreApiNA.fetchGames()
-    val euGames = StoreApiEU.fetchGames()
+//    val euGames = StoreApiEU.fetchGames()
+//    val naGames = StoreApiNA.fetchGames()
     val jpGames = StoreApiJP.fetchGames()
-    val hkGames = StoreApiHK.fetchGames()
-
+//    val hkGames = StoreApiHK.fetchGames()
 
     println("Get all items completed successfully")
     println("Total time elapsed: ${System.currentTimeMillis() - startTime} ms")

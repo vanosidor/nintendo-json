@@ -5,6 +5,8 @@ import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
@@ -12,6 +14,7 @@ const val HK_STORE_URL = "https://www.nintendo.com.hk/data/json/switch_software.
 
 class StoreApiHK {
     companion object {
+        @OptIn(ExperimentalSerializationApi::class)
         suspend fun fetchGames(): List<HkGame> {
             println("HK store fetch games started")
 
@@ -24,6 +27,7 @@ class StoreApiHK {
                             prettyPrint = true
                             isLenient = true
                             ignoreUnknownKeys = true
+                            explicitNulls = false
                         },
                     )
                 }
@@ -52,4 +56,11 @@ class StoreApiHK {
 }
 
 @Serializable
-data class HkGame(val title: String)
+data class HkGame(
+    val title: String,
+    @SerialName("lang") val language: String, // "CN" or empty string
+    val link: String, // link to store "https://store.nintendo.com.hk/70010000023476"
+    @SerialName("product_code") val productCode: String, // "HACPATJFA"
+    val price: String,  // 399
+    val category: String,  // "模擬RPG" or "RPG"
+)
