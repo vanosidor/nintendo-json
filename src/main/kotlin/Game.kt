@@ -60,25 +60,23 @@ data class Game(
             )
         }
 
-        fun fromNaDto(naGame: NaGameDto): Game {
-
+        fun fromNaDto(naGame: NaGameDto, gameExtras: GameExtras? = null): Game {
             val players = Regex("[^\\d]*").replace(naGame.players.toString(), "").toInt()
+            val languages = gameExtras?.languages ?: emptyList()
+            val productCode = gameExtras?.productCode ?: ""
 
             return Game(
                 title = naGame.title ?: "",
                 description = naGame.description ?: "",
                 nsuid = naGame.nsuid ?: "",
-                productCode = "",
+                productCode = productCode,
                 players = players,
-//                TODO
-                storeUrl = "",
+                storeUrl = naGame.storeUrl,
                 regionCode = RegionCode.NA,
-//                TODO
-                imageUrl = "",
+                imageUrl = naGame.image ?: "",
                 imageUrl2x1 = "",
-//                TODO
-                languages = emptyList(),
-                categories = emptyList(),
+                languages = languages,
+                categories = naGame.categories ?: emptyList(),
             )
         }
 

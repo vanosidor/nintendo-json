@@ -1,0 +1,1549 @@
+{
+  "props": {
+    "pageProps": {
+      "product": {
+        "__typename": "StoreProduct",
+        "ageGate": false,
+        "appStoreUrl": null,
+        "availability": [
+          "Available now"
+        ],
+        "backgroundColor": "15c7e8",
+        "baseSoftware": null,
+        "capacity": null,
+        "configurableOptions": null,
+        "containsBattery": false,
+        "contentDescriptors": [
+          {
+            "__typename": "ContentDescriptor",
+            "id": "6r16wBrvpV4xHMjYdXvGv9",
+            "locale": "en_US",
+            "label": "Mild Cartoon Violence",
+            "type": "CONTENT_DESCRIPTOR"
+          }
+        ],
+        "contentRating": {
+          "__typename": "ContentRating",
+          "id": "3PUsVpTIBTxVxmzL362ZkB",
+          "locale": "en_US",
+          "code": "e",
+          "label": "Everyone",
+          "requiresAgeGate": false,
+          "system": "ESRB",
+          "order": 6
+        },
+        "crossSellProducts": [
+          {
+            "__typename": "StoreProduct",
+            "name": "Captain Toad™: Treasure Tracker ",
+            "sku": "7100002722",
+            "nsuid": "70010000002722",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 39.99,
+                "percentOff": 0,
+                "regularPrice": 39.99
+              }
+            },
+            "urlKey": "captain-toad-treasure-tracker-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2018-07-13T08:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": "70030000003021",
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/c/captain-toad-treasure-tracker-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "6r16wBrvpV4xHMjYdXvGv9",
+                "locale": "en_US",
+                "label": "Mild Cartoon Violence",
+                "type": "CONTENT_DESCRIPTOR"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          },
+          {
+            "__typename": "StoreProduct",
+            "name": "New Super Lucky's Tale",
+            "sku": "7100020891",
+            "nsuid": "70010000020891",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 29.99,
+                "percentOff": 0,
+                "regularPrice": 29.99
+              }
+            },
+            "urlKey": "new-super-luckys-tale-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2019-11-08T08:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": "70030000009941",
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/n/new-super-luckys-tale-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "6r16wBrvpV4xHMjYdXvGv9",
+                "locale": "en_US",
+                "label": "Mild Cartoon Violence",
+                "type": "CONTENT_DESCRIPTOR"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          },
+          {
+            "__typename": "StoreProduct",
+            "name": "Yooka-Laylee and the Impossible Lair",
+            "sku": "7100018416",
+            "nsuid": "70010000018416",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 29.99,
+                "percentOff": 0,
+                "regularPrice": 29.99
+              }
+            },
+            "urlKey": "yooka-laylee-and-the-impossible-lair-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2019-10-08T07:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": null,
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/y/yooka-laylee-and-the-impossible-lair-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "6r16wBrvpV4xHMjYdXvGv9",
+                "locale": "en_US",
+                "label": "Mild Cartoon Violence",
+                "type": "CONTENT_DESCRIPTOR"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          },
+          {
+            "__typename": "StoreProduct",
+            "name": "Paper Mario™: The Origami King",
+            "sku": "7100029726",
+            "nsuid": "70010000029726",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 59.99,
+                "percentOff": 0,
+                "regularPrice": 59.99
+              }
+            },
+            "urlKey": "paper-mario-the-origami-king-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2020-07-17T00:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": null,
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/p/paper-mario-the-origami-king-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "6r16wBrvpV4xHMjYdXvGv9",
+                "locale": "en_US",
+                "label": "Mild Cartoon Violence",
+                "type": "CONTENT_DESCRIPTOR"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          },
+          {
+            "__typename": "StoreProduct",
+            "name": "New Super Mario Bros.™ U Deluxe",
+            "sku": "7100006411",
+            "nsuid": "70010000006411",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 59.99,
+                "percentOff": 0,
+                "regularPrice": 59.99
+              }
+            },
+            "urlKey": "new-super-mario-bros-u-deluxe-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2019-01-11T00:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": null,
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/n/new-super-mario-bros-u-deluxe-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "tJACbQjMzqwwY40TBCy1x",
+                "locale": "en_US",
+                "label": "Comic Mischief",
+                "type": "CONTENT_DESCRIPTOR"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          },
+          {
+            "__typename": "StoreProduct",
+            "name": "Donkey Kong Country™: Tropical Freeze",
+            "sku": "7100001339",
+            "nsuid": "70010000001339",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 59.99,
+                "percentOff": 0,
+                "regularPrice": 59.99
+              }
+            },
+            "urlKey": "donkey-kong-country-tropical-freeze-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2018-05-04T08:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": null,
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/d/donkey-kong-country-tropical-freeze-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "6r16wBrvpV4xHMjYdXvGv9",
+                "locale": "en_US",
+                "label": "Mild Cartoon Violence",
+                "type": "CONTENT_DESCRIPTOR"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          },
+          {
+            "__typename": "StoreProduct",
+            "name": "Game Builder Garage™",
+            "sku": "7100041267",
+            "nsuid": "70010000041267",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 29.99,
+                "percentOff": 0,
+                "regularPrice": 29.99
+              }
+            },
+            "urlKey": "game-builder-garage-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2021-06-11T00:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": "70030000013883",
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/g/game-builder-garage-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "48NMszDk1XdHSyTR5xenri",
+                "locale": "en_US",
+                "label": "Mild Fantasy Violence",
+                "type": "CONTENT_DESCRIPTOR"
+              },
+              {
+                "__typename": "ContentDescriptor",
+                "id": "390PoEPj7B3hb5HzJNJpg3",
+                "locale": "en_US",
+                "label": "In-Game Purchases",
+                "type": "INTERACTIVE_ELEMENT"
+              },
+              {
+                "__typename": "ContentDescriptor",
+                "id": "PuUlZqXPrK4WzWD2LWYLV",
+                "locale": "en_US",
+                "label": "Users Interact",
+                "type": "INTERACTIVE_ELEMENT"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          },
+          {
+            "__typename": "StoreProduct",
+            "name": "Kirby’s Dream Buffet™",
+            "sku": "7100056620",
+            "nsuid": "70010000056620",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 14.99,
+                "percentOff": 0,
+                "regularPrice": 14.99
+              }
+            },
+            "urlKey": "kirbys-dream-buffet-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2022-08-17T00:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": null,
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/k/kirbys-dream-buffet-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "6r16wBrvpV4xHMjYdXvGv9",
+                "locale": "en_US",
+                "label": "Mild Cartoon Violence",
+                "type": "CONTENT_DESCRIPTOR"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          },
+          {
+            "__typename": "StoreProduct",
+            "name": "Donut County",
+            "sku": "7100014127",
+            "nsuid": "70010000014127",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 12.99,
+                "percentOff": 0,
+                "regularPrice": 12.99
+              }
+            },
+            "urlKey": "donut-county-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2018-12-18T08:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": null,
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/d/donut-county-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "tJACbQjMzqwwY40TBCy1x",
+                "locale": "en_US",
+                "label": "Comic Mischief",
+                "type": "CONTENT_DESCRIPTOR"
+              },
+              {
+                "__typename": "ContentDescriptor",
+                "id": "48NMszDk1XdHSyTR5xenri",
+                "locale": "en_US",
+                "label": "Mild Fantasy Violence",
+                "type": "CONTENT_DESCRIPTOR"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          },
+          {
+            "__typename": "StoreProduct",
+            "name": "Kirby Fighters™ 2 ",
+            "sku": "7100034635",
+            "nsuid": "70010000034635",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 19.99,
+                "percentOff": 0,
+                "regularPrice": 19.99
+              }
+            },
+            "urlKey": "kirby-fighters-2-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2020-09-23T00:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": "70030000012485",
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/k/kirby-fighters-2-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "48NMszDk1XdHSyTR5xenri",
+                "locale": "en_US",
+                "label": "Mild Fantasy Violence",
+                "type": "CONTENT_DESCRIPTOR"
+              },
+              {
+                "__typename": "ContentDescriptor",
+                "id": "390PoEPj7B3hb5HzJNJpg3",
+                "locale": "en_US",
+                "label": "In-Game Purchases",
+                "type": "INTERACTIVE_ELEMENT"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          },
+          {
+            "__typename": "StoreProduct",
+            "name": "Disney TSUM TSUM FESTIVAL",
+            "sku": "7100021342",
+            "nsuid": "70010000021342",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 49.99,
+                "percentOff": 0,
+                "regularPrice": 49.99
+              }
+            },
+            "urlKey": "disney-tsum-tsum-festival-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2019-11-08T08:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": null,
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/d/disney-tsum-tsum-festival-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "6r16wBrvpV4xHMjYdXvGv9",
+                "locale": "en_US",
+                "label": "Mild Cartoon Violence",
+                "type": "CONTENT_DESCRIPTOR"
+              },
+              {
+                "__typename": "ContentDescriptor",
+                "id": "PuUlZqXPrK4WzWD2LWYLV",
+                "locale": "en_US",
+                "label": "Users Interact",
+                "type": "INTERACTIVE_ELEMENT"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          },
+          {
+            "__typename": "StoreProduct",
+            "name": "Sonic Origins ",
+            "sku": "7100045649",
+            "nsuid": "70010000045649",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 39.99,
+                "percentOff": 0,
+                "regularPrice": 39.99
+              }
+            },
+            "urlKey": "sonic-origins-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2022-06-23T00:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": null,
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/s/sonic-origins-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "6r16wBrvpV4xHMjYdXvGv9",
+                "locale": "en_US",
+                "label": "Mild Cartoon Violence",
+                "type": "CONTENT_DESCRIPTOR"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          },
+          {
+            "__typename": "StoreProduct",
+            "name": "Sushi Striker™: The Way of Sushido",
+            "sku": "7100003842",
+            "nsuid": "70010000003842",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 49.99,
+                "percentOff": 0,
+                "regularPrice": 49.99
+              }
+            },
+            "urlKey": "sushi-striker-the-way-of-sushido-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2018-06-08T08:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": "70030000002761",
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/s/sushi-striker-the-way-of-sushido-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "6r16wBrvpV4xHMjYdXvGv9",
+                "locale": "en_US",
+                "label": "Mild Cartoon Violence",
+                "type": "CONTENT_DESCRIPTOR"
+              },
+              {
+                "__typename": "ContentDescriptor",
+                "id": "5daPFry1u1yQnAF5m0vLuc",
+                "locale": "en_US",
+                "label": "Mild Suggestive Themes",
+                "type": "CONTENT_DESCRIPTOR"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          },
+          {
+            "__typename": "StoreProduct",
+            "name": "PAC-MAN WORLD Re-PAC",
+            "sku": "7100042729",
+            "nsuid": "70010000042729",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 29.99,
+                "percentOff": 0,
+                "regularPrice": 29.99
+              }
+            },
+            "urlKey": "pac-man-world-re-pac-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2022-08-26T00:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": null,
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/p/pac-man-world-re-pac-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "6r16wBrvpV4xHMjYdXvGv9",
+                "locale": "en_US",
+                "label": "Mild Cartoon Violence",
+                "type": "CONTENT_DESCRIPTOR"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          },
+          {
+            "__typename": "StoreProduct",
+            "name": "BOXBOY! + BOXGIRL!™ ",
+            "sku": "7100018692",
+            "nsuid": "70010000018692",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 9.99,
+                "percentOff": 0,
+                "regularPrice": 9.99
+              }
+            },
+            "urlKey": "boxboy-plus-boxgirl-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2019-04-26T00:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": "70030000006721",
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/b/boxboy-and-boxgirl-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "48NMszDk1XdHSyTR5xenri",
+                "locale": "en_US",
+                "label": "Mild Fantasy Violence",
+                "type": "CONTENT_DESCRIPTOR"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          },
+          {
+            "__typename": "StoreProduct",
+            "name": "Bubble Bobble 4 Friends: The Baron is Back!",
+            "sku": "7100023348",
+            "nsuid": "70010000023348",
+            "locale": "en_US",
+            "platform": {
+              "__typename": "Platform",
+              "label": "Nintendo Switch",
+              "code": "NINTENDO_SWITCH"
+            },
+            "prices": {
+              "__typename": "PriceRange",
+              "minimum": {
+                "__typename": "Price",
+                "amountOff": 0,
+                "currency": "USD",
+                "discounted": false,
+                "finalPrice": 39.99,
+                "percentOff": 0,
+                "regularPrice": 39.99
+              }
+            },
+            "urlKey": "bubble-bobble-4-friends-the-baron-is-back-switch",
+            "availability": [
+              "Available now"
+            ],
+            "topLevelCategory": {
+              "__typename": "TopLevelCategory",
+              "code": "GAMES",
+              "label": "Games"
+            },
+            "platinumPoints": null,
+            "releaseDate": "2020-03-31T08:00:00.000Z",
+            "releaseDateDisplay": null,
+            "exclusive": false,
+            "demoNsuid": null,
+            "dlcType": null,
+            "productImage": {
+              "__typename": "CloudinaryAsset",
+              "publicId": "ncom/en_US/games/switch/b/bubble-bobble-4-friends-the-baron-is-back-switch/hero"
+            },
+            "contentDescriptors": [
+              {
+                "__typename": "ContentDescriptor",
+                "id": "6r16wBrvpV4xHMjYdXvGv9",
+                "locale": "en_US",
+                "label": "Mild Cartoon Violence",
+                "type": "CONTENT_DESCRIPTOR"
+              }
+            ],
+            "contentRating": {
+              "__typename": "ContentRating",
+              "id": "3PUsVpTIBTxVxmzL362ZkB",
+              "locale": "en_US",
+              "code": "e",
+              "label": "Everyone",
+              "requiresAgeGate": false,
+              "system": "ESRB",
+              "order": 6
+            }
+          }
+        ],
+        "upsellProducts": null,
+        "detailPageUrl": "https://www.nintendo.com/store/products/yoshis-crafted-world-switch/",
+        "displayChokingHazard": false,
+        "displayProp65": false,
+        "manufacturer": null,
+        "countryOfManufacture": null,
+        "countryOfOrigin": null,
+        "demoNsuid": "70030000005881",
+        "demoType": {
+          "__typename": "AttributeOption",
+          "code": 18702,
+          "label": "Demo"
+        },
+        "description": "\u003cp\u003eJump into a new Yoshi adventure in a world made of everyday objects—like boxes and paper cups! As Yoshi, you’ll leap up high, gulp down enemies, and set out on a treasure hunt to find all the different collectables. On the flip side, stages can be played backwards, providing new perspectives to explore and new ways to locate some of the more craftily hidden items!\u003cbr\u003e\u003cbr\u003eIt all started when Kamek and Baby Bowser set out to steal a gem-set stone. Legend has it that this fabled artifact can grant the bearer their wildest dreams! But when the artifact’s gems are sent flying, it falls upon Yoshi and friends to find them. Luckily, saving the day can be cooperative and challenging. Pass a Joy-Con™ controller to a friend to team up as fellow Yoshis. Also, Mellow mode gives Yoshi wings for a breezier experience, which may come in handy! Finding all the flowers, coins, and Poochy Pups is no small feat! For extra protection, suit up in one of the handicraft costumes you can unlock in-game or by tapping select amiibo™ figures!\u003c/p\u003e",
+        "descriptionImage": {
+          "__typename": "CloudinaryAsset",
+          "publicId": "ncom/en_US/games/switch/y/yoshis-crafted-world-switch/description-image",
+          "resourceType": "image",
+          "type": "upload"
+        },
+        "disclaimer": "\u003cp\u003eA Nintendo Switch Online membership (sold separately) is required for Save Data Cloud backup.\u003c/p\u003e\u003cp\u003e\u003cp\u003eGame, system and amiibo sold separately.\u003cbr\u003e© 2019 Nintendo. Yoshi’s Crafted World and Nintendo Switch are trademarks of Nintendo. \u003c/p\u003e\u003c/p\u003e",
+        "dlcType": null,
+        "edition": {
+          "__typename": "AttributeOption",
+          "label": "Standard Edition"
+        },
+        "enableRetailCrawler": true,
+        "eshopDetails": {
+          "__typename": "EshopDetails",
+          "isPurchased": false,
+          "isPreordered": false,
+          "isPreorderable": false,
+          "isPurchasable": true,
+          "goldPoints": 300,
+          "purchaseUrl": "https://ec.nintendo.com/title_purchase_confirm?title=70010000000734"
+        },
+        "exclusive": false,
+        "facets": {
+          "__typename": "Facets",
+          "corePlatforms": [
+            "Nintendo Switch"
+          ]
+        },
+        "googlePlayUrl": null,
+        "genres": [
+          {
+            "__typename": "GameGenre",
+            "code": "ACTION",
+            "label": "Action"
+          },
+          {
+            "__typename": "GameGenre",
+            "code": "PLATFORMER",
+            "label": "Platformer"
+          }
+        ],
+        "headline": "Get crafty with Yoshi in a handicraft world",
+        "isSalableQty": true,
+        "locale": "en_US",
+        "metaDescription": "Jump into a new Yoshi adventure in a world made of everyday objects—like boxes and paper cups! As Yoshi, you’ll leap up high, gulp down enemies, and set out on a treasure hunt to find all the different collectables. On the flip side, stages can be played…",
+        "metaKeyword": null,
+        "metaTitle": "Yoshi’s Crafted World™",
+        "name": "Yoshi’s Crafted World™",
+        "nsoFeatures": [
+          {
+            "__typename": "NsoFeature",
+            "code": "SAVE_DATA_CLOUD",
+            "label": "Save Data Cloud"
+          }
+        ],
+        "nsuid": "70010000000734",
+        "id": "ODkzMTQ=",
+        "numberOfPlayers": null,
+        "officialSite": null,
+        "productType": "SIMPLE",
+        "productImage": {
+          "__typename": "CloudinaryAsset",
+          "publicId": "ncom/en_US/games/switch/y/yoshis-crafted-world-switch/hero",
+          "resourceType": "image",
+          "type": "upload"
+        },
+        "parentNsuid": null,
+        "platform": {
+          "__typename": "Platform",
+          "label": "Nintendo Switch",
+          "code": "NINTENDO_SWITCH"
+        },
+        "platinumPoints": null,
+        "playModes": [
+          {
+            "__typename": "PlayMode",
+            "code": "TV_MODE",
+            "label": "TV mode"
+          },
+          {
+            "__typename": "PlayMode",
+            "code": "TABLETOP_MODE",
+            "label": "Tabletop mode"
+          },
+          {
+            "__typename": "PlayMode",
+            "code": "HANDHELD_MODE",
+            "label": "Handheld mode"
+          }
+        ],
+        "playersMax": 2,
+        "playersMaxLocal": null,
+        "playersMaxOnline": null,
+        "playersMin": 1,
+        "playersMinLocal": null,
+        "playersMinOnline": null,
+        "prePurchase": false,
+        "purchasableQty": 10,
+        "maxQtyAllowedInCart": 10000,
+        "productCode": "HACPAEA2A",
+        "productGallery": [
+          {
+            "__typename": "CloudinaryAsset",
+            "publicId": "Legacy Videos/lqN2JhaDE6FxYySRJe7HFB_ZU2yJ5Ha5",
+            "resourceType": "video",
+            "type": "upload"
+          },
+          {
+            "__typename": "CloudinaryAsset",
+            "publicId": "ncom/en_US/games/switch/y/yoshis-crafted-world-switch/screenshot-gallery/screenshot01",
+            "resourceType": "image",
+            "type": "upload"
+          },
+          {
+            "__typename": "CloudinaryAsset",
+            "publicId": "ncom/en_US/games/switch/y/yoshis-crafted-world-switch/screenshot-gallery/screenshot02",
+            "resourceType": "image",
+            "type": "upload"
+          },
+          {
+            "__typename": "CloudinaryAsset",
+            "publicId": "ncom/en_US/games/switch/y/yoshis-crafted-world-switch/screenshot-gallery/screenshot03",
+            "resourceType": "image",
+            "type": "upload"
+          },
+          {
+            "__typename": "CloudinaryAsset",
+            "publicId": "ncom/en_US/games/switch/y/yoshis-crafted-world-switch/screenshot-gallery/screenshot04",
+            "resourceType": "image",
+            "type": "upload"
+          },
+          {
+            "__typename": "CloudinaryAsset",
+            "publicId": "ncom/en_US/games/switch/y/yoshis-crafted-world-switch/screenshot-gallery/screenshot05",
+            "resourceType": "image",
+            "type": "upload"
+          }
+        ],
+        "prices": {
+          "__typename": "PriceRange",
+          "minimum": {
+            "__typename": "Price",
+            "amountOff": 0,
+            "currency": "USD",
+            "discounted": false,
+            "finalPrice": 59.99,
+            "regularPrice": 59.99
+          },
+          "maximum": null
+        },
+        "qtyAllowedPerCustomer": null,
+        "relatedProducts": [
+
+        ],
+        "releaseDate": "2019-03-29T00:00:00.000Z",
+        "releaseDateDisplay": null,
+        "requiresLogin": false,
+        "requiresCoupon": false,
+        "requiresSubscription": false,
+        "romFileSize": "6020923392",
+        "series": null,
+        "size": null,
+        "sizeChart": null,
+        "stockStatus": "IN_STOCK",
+        "sku": "7100000734",
+        "softwareDeveloper": "Good-Feel",
+        "softwarePublisher": "Nintendo",
+        "soldOutTemporary": false,
+        "soldOutPermanent": false,
+        "supportedLanguages": [
+          "Dutch",
+          "English",
+          "French",
+          "German",
+          "Italian",
+          "Japanese",
+          "Korean",
+          "Russian",
+          "Simplified Chinese",
+          "Spanish",
+          "Traditional Chinese"
+        ],
+        "switchRequired": false,
+        "topLegalDisclaimer": null,
+        "topLevelCategory": {
+          "__typename": "TopLevelCategory",
+          "code": "GAMES",
+          "label": "Games"
+        },
+        "upc": " ",
+        "urlKey": "yoshis-crafted-world-switch",
+        "variants": null
+      },
+      "bestSellers": [
+
+      ],
+      "configurable": {
+        "__typename": "StoreProduct",
+        "ageGate": false,
+        "appStoreUrl": null,
+        "availability": [
+
+        ],
+        "backgroundColor": "15c7e8",
+        "baseSoftware": null,
+        "capacity": null,
+        "configurableOptions": [
+          {
+            "__typename": "ConfigurableProductOptions",
+            "label": "Edition",
+            "position": 0,
+            "attributeCode": "edition",
+            "values": [
+              {
+                "__typename": "ConfigurableProductOption",
+                "code": 109,
+                "swatch": "Standard",
+                "label": "Standard Edition"
+              },
+              {
+                "__typename": "ConfigurableProductOption",
+                "code": 502,
+                "swatch": "Physical",
+                "label": "Physical Edition - US"
+              }
+            ]
+          }
+        ],
+        "containsBattery": false,
+        "contentDescriptors": [
+
+        ],
+        "contentRating": null,
+        "crossSellProducts": null,
+        "upsellProducts": null,
+        "detailPageUrl": "https://www.nintendo.com/store/products/yoshis-crafted-world-configurable/",
+        "displayChokingHazard": false,
+        "displayProp65": false,
+        "manufacturer": null,
+        "countryOfManufacture": null,
+        "countryOfOrigin": null,
+        "demoNsuid": null,
+        "demoType": null,
+        "description": "",
+        "descriptionImage": null,
+        "disclaimer": null,
+        "dlcType": null,
+        "edition": null,
+        "enableRetailCrawler": false,
+        "eshopDetails": null,
+        "exclusive": false,
+        "facets": {
+          "__typename": "Facets",
+          "corePlatforms": [
+
+          ]
+        },
+        "googlePlayUrl": null,
+        "genres": null,
+        "headline": null,
+        "isSalableQty": true,
+        "locale": "en_US",
+        "metaDescription": null,
+        "metaKeyword": null,
+        "metaTitle": null,
+        "name": "Yoshi’s Crafted World™ Configurable",
+        "nsoFeatures": null,
+        "nsuid": null,
+        "id": "ODk5MzU=",
+        "numberOfPlayers": null,
+        "officialSite": null,
+        "productType": "CONFIGURABLE",
+        "productImage": null,
+        "parentNsuid": null,
+        "platform": null,
+        "platinumPoints": null,
+        "playModes": null,
+        "playersMax": null,
+        "playersMaxLocal": null,
+        "playersMaxOnline": null,
+        "playersMin": null,
+        "playersMinLocal": null,
+        "playersMinOnline": null,
+        "prePurchase": false,
+        "purchasableQty": 10,
+        "maxQtyAllowedInCart": 10000,
+        "productCode": null,
+        "productGallery": null,
+        "prices": {
+          "__typename": "PriceRange",
+          "minimum": {
+            "__typename": "Price",
+            "amountOff": 0,
+            "currency": "USD",
+            "discounted": false,
+            "finalPrice": 59.99,
+            "regularPrice": 59.99
+          },
+          "maximum": null
+        },
+        "qtyAllowedPerCustomer": null,
+        "relatedProducts": [
+
+        ],
+        "releaseDate": null,
+        "releaseDateDisplay": null,
+        "requiresLogin": false,
+        "requiresCoupon": false,
+        "requiresSubscription": false,
+        "romFileSize": null,
+        "series": null,
+        "size": null,
+        "sizeChart": null,
+        "stockStatus": "IN_STOCK",
+        "sku": "7100000734-C",
+        "softwareDeveloper": null,
+        "softwarePublisher": null,
+        "soldOutTemporary": false,
+        "soldOutPermanent": false,
+        "supportedLanguages": null,
+        "switchRequired": false,
+        "topLegalDisclaimer": null,
+        "topLevelCategory": null,
+        "upc": null,
+        "urlKey": "yoshis-crafted-world-configurable",
+        "variants": [
+          {
+            "__typename": "StoreProductVariant",
+            "attributes": [
+              {
+                "__typename": "ConfigurableAttributeOption",
+                "label": "Standard Edition"
+              }
+            ],
+            "product": {
+              "__typename": "StoreProduct",
+              "nsuid": "70010000000734",
+              "name": "Yoshi’s Crafted World™",
+              "urlKey": "yoshis-crafted-world-switch",
+              "capacity": null,
+              "color": null,
+              "locale": "en_US",
+              "prices": {
+                "__typename": "PriceRange",
+                "minimum": {
+                  "__typename": "Price",
+                  "finalPrice": 59.99
+                }
+              },
+              "productImage": {
+                "__typename": "CloudinaryAsset",
+                "publicId": "ncom/en_US/games/switch/y/yoshis-crafted-world-switch/hero"
+              },
+              "size": null,
+              "shoeSize": null,
+              "soldOutPermanent": false,
+              "soldOutTemporary": false,
+              "stockStatus": "IN_STOCK",
+              "sku": "7100000734"
+            }
+          },
+          {
+            "__typename": "StoreProductVariant",
+            "attributes": [
+              {
+                "__typename": "ConfigurableAttributeOption",
+                "label": "Physical Edition - US"
+              }
+            ],
+            "product": {
+              "__typename": "StoreProduct",
+              "nsuid": null,
+              "name": "Yoshi's Crafted World",
+              "urlKey": "yoshi-s-crafted-world-108304",
+              "capacity": null,
+              "color": null,
+              "locale": "en_US",
+              "prices": {
+                "__typename": "PriceRange",
+                "minimum": {
+                  "__typename": "Price",
+                  "finalPrice": 59.99
+                }
+              },
+              "productImage": {
+                "__typename": "CloudinaryAsset",
+                "publicId": "ncom/en_US/products/games/switch/yoshi-s-crafted-world/108304-switch-yoshis-crafted-world-us-1200x675"
+              },
+              "size": null,
+              "shoeSize": null,
+              "soldOutPermanent": false,
+              "soldOutTemporary": true,
+              "stockStatus": "IN_STOCK",
+              "sku": "108304"
+            }
+          }
+        ]
+      },
+      "locale": "en-us",
+      "preview": false,
+      "previewData": null,
+      "meta": {
+        "title": "Yoshi’s Crafted World™ for Nintendo Switch - Nintendo Official Site",
+        "description": "Jump into a new Yoshi adventure in a world made of everyday objects—like boxes and paper cups! As Yoshi, you’ll leap up high, gulp down enemies, and set out on a treasure hunt to find all the different collectables. On the flip side, stages can be played…"
+      },
+      "analytics": {
+        "pageType": "Game Detail Page",
+        "pageName": "Yoshi’s Crafted World™",
+        "pageCategory": "Store:Products",
+        "product": {
+          "name": "Yoshi’s Crafted World™",
+          "sku": "7100000734",
+          "nsuid": "70010000000734"
+        }
+      },
+      "openGraph": {
+        "image": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/en_US/games/switch/y/yoshis-crafted-world-switch/hero"
+      },
+      "linkedData": {
+        "@type": "Product",
+        "name": "Yoshi’s Crafted World™",
+        "image": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/en_US/games/switch/y/yoshis-crafted-world-switch/hero",
+        "description": "Jump into a new Yoshi adventure in a world made of everyday objects—like boxes and paper cups! As Yoshi, you’ll leap up high, gulp down enemies, and set out on a treasure hunt to find all the different collectables. On the flip side, stages can be played…",
+        "brand": "Nintendo",
+        "category": "Games",
+        "sku": "7100000734",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.nintendo.com/store/products/yoshis-crafted-world-switch/",
+          "priceCurrency": "USD",
+          "price": "59.99",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition"
+        },
+        "@context": "https://schema.org/"
+      }
+    },
+    "__N_SSP": true
+  },
+  "page": "/store/products/[slug]",
+  "query": {
+    "slug": "yoshis-crafted-world-switch"
+  },
+  "buildId": "J4zIwbu1Y8H5EBaecbNaQ",
+  "isFallback": false,
+  "gssp": true,
+  "customServer": true,
+  "locale": "en-us",
+  "locales": [
+    "en-us",
+    "en-ca",
+    "fr-ca",
+    "es-mx",
+    "pt-br",
+    "es-ar",
+    "es-cl",
+    "es-co",
+    "es-pe"
+  ],
+  "defaultLocale": "en-us",
+  "scriptLoader": [
+
+  ]
+}

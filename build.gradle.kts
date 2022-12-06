@@ -15,8 +15,6 @@ repositories {
     mavenCentral()
 }
 
-
-
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
@@ -34,4 +32,5 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
     implementation("io.ktor:ktor-client-logging:$ktor_version")
     implementation("com.algolia:algoliasearch-client-kotlin:2.1.1")
+    implementation("org.jsoup:jsoup:1.15.3")
 }

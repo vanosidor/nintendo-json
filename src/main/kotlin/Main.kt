@@ -15,6 +15,11 @@ suspend fun main() {
 //    val jpGames = StoreApiJP.fetchGames()
 //    val hkGames = StoreApiHK.fetchGames()
 
+
+//    val naGame = naGames.firstOrNull()?.let {
+//        StoreApiNA.extractGameExtras(it.storeUrl)
+//    }
+
     println("Get all items completed successfully")
     println("Total time elapsed: ${System.currentTimeMillis() - startTime} ms")
 }
