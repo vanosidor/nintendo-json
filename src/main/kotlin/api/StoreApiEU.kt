@@ -14,21 +14,22 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-const val EU_RU_STORE_URL = "https://search.nintendo-europe.com/ru/select"
-const val EU_EN_STORE_URL = "https://search.nintendo-europe.com/en/select"
 
 // TODO prices
 // TODO merge En and Ru result
 
 class StoreApiEU {
     companion object {
+        private const val EU_RU_STORE_URL = "https://search.nintendo-europe.com/ru/select"
+        const val EU_EN_STORE_URL = "https://search.nintendo-europe.com/en/select"
+
         @OptIn(ExperimentalSerializationApi::class)
         suspend fun fetchGames(): List<Game> {
             println("EU store fetch games started")
 
             val gamesResult = arrayListOf<Game>()
 
-            val storeHttpClient = HttpClient(OkHttp) {
+            val httpClient = HttpClient(OkHttp) {
                 install(ContentNegotiation) {
                     json(
                         Json {
@@ -47,7 +48,7 @@ class StoreApiEU {
             val rows = 200
 
             while (true) {
-                val euResponse: HttpResponse = storeHttpClient.get(EU_RU_STORE_URL) {
+                val httpResponse: HttpResponse = httpClient.get(EU_RU_STORE_URL) {
                     url {
                         parameters.apply {
                             append("q", "*")
@@ -59,7 +60,7 @@ class StoreApiEU {
                     }
                 }
 
-                val statusCode = euResponse.status.value
+                val statusCode = httpResponse.status.value
 
                 println("EU statusCode: $statusCode")
 
@@ -67,7 +68,7 @@ class StoreApiEU {
                     break
                 }
 
-                val responseDto: EuStoreResponseRootDto = euResponse.body()
+                val responseDto: EuStoreResponseRootDto = httpResponse.body()
 
                 val newItems = responseDto.response.docs
 
@@ -86,7 +87,7 @@ class StoreApiEU {
                 start += rows
             }
 
-            storeHttpClient.close()
+            httpClient.close()
 
             println("EU store games fetched\n")
 

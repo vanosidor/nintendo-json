@@ -1,3 +1,4 @@
+import api.PricesApi
 import api.StoreApiEU
 
 //TODO move to readme
@@ -17,14 +18,13 @@ suspend fun main() {
 
     val euGames = StoreApiEU.fetchGames()
 
+    val euNsuids = euGames.map { it.nsuid }
+
+    val pricesRu = PricesApi.fetchPricesForCountry(country = "RU", nsuids = euNsuids)
+
 //    val jpGames = api.StoreApiJP.fetchGames()
 //    val hkGames = api.StoreApiHK.fetchGames()
-    //    val naGames = api.StoreApiNA.fetchGames()
-
-// For test only
-//    val naGame = naGames.firstOrNull()?.let {
-//        api.StoreApiNA.extractGameExtras(it.storeUrl)
-//    }
+//    val naGames = api.StoreApiNA.fetchGames()
 
     println("Get all items completed successfully")
     println("Total time elapsed: ${System.currentTimeMillis() - startTime} ms")
