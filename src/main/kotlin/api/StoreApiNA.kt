@@ -1,27 +1,28 @@
+package api
+
 import com.algolia.search.client.ClientSearch
 import com.algolia.search.dsl.requestOptions
 import com.algolia.search.model.APIKey
 import com.algolia.search.model.ApplicationID
 import com.algolia.search.model.IndexName
 import com.algolia.search.model.search.Query
+import entities.Game
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.decodeFromJsonElement
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 
-// TODO create new APP_ID and API_KEY
+// TODO create new APP_ID and api.API_KEY
 const val APPLICATION_ID = "U3B6GR4UA3"
 const val API_KEY = "c4da8be7fd29f0f5bfa42920b0a99dc7"
 const val INDEX = "ncom_game_en_us"
 const val PLATFORM_CODE = "7001"
 
-const val ESHOP_URL = "https://www.nintendo.com/store/products/"
+const val NA_PRODUCT_URL = "https://www.nintendo.com/store/products/"
 
 class StoreApiNA {
     companion object {
@@ -53,27 +54,19 @@ class StoreApiNA {
                 header("hitsPerPage", 500)
             }
 
-//            val json = Json {
-//                ignoreUnknownKeys = true
-//                coerceInputValues = true
-//                explicitNulls = false
-//            }
-
             var current = 0
             var emptyPages = 0
             var successScraps = 0
+
             while (true) {
                 println("Current page = $current")
                 val currentFormatted: String = "%07d".format(current)
                 val responseSearch =
                     index.search(Query("$PLATFORM_CODE$currentFormatted"), requestOptions = requestOptions)
 
-//              val withNsuid = responseSearch.hits.find { (it.json["nsuid"] as JsonPrimitive).content == "70010000013025"}
-
                 val games = responseSearch.hits.map {
                     json.decodeFromJsonElement<NaGameDto>(it.json)
                 }
-
 
                 if (games.isEmpty()) {
                     emptyPages++
@@ -101,10 +94,9 @@ class StoreApiNA {
                 current += 1
             }
 
-            println("Successful scraps $successScraps, total items ${gamesResult.size}")
-
             client.close()
 
+            println("Successful scraps $successScraps, total items ${gamesResult.size}")
             println("NA store games fetched\n")
 
 
@@ -147,7 +139,7 @@ data class NaGameDto(
     @SerialName("horizontalHeaderImage") val horizontalHeaderImage: String?,
 ) {
     val storeUrl: String
-        get() = "$ESHOP_URL$slug/"
+        get() = "$NA_PRODUCT_URL$slug/"
 }
 
 @Serializable

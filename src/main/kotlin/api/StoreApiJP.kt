@@ -1,3 +1,6 @@
+package api
+
+import entities.Game
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.okhttp.*
@@ -11,6 +14,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 const val JP_STORE_URL = "https://search.nintendo.jp/nintendo_soft/search.json"
+const val JP_PRODUCT_URL = "https://store-jp.nintendo.com/list/software/"
 
 class StoreApiJP {
     companion object {
@@ -20,7 +24,7 @@ class StoreApiJP {
 
             val gamesResult = arrayListOf<Game>()
 
-            val jpStoreClient = HttpClient(OkHttp) {
+            val storeHttpClient = HttpClient(OkHttp) {
                 install(ContentNegotiation) {
                     json(
                         Json {
@@ -38,7 +42,7 @@ class StoreApiJP {
             val limit = 150
 
             while (true) {
-                val httpResponse: HttpResponse = jpStoreClient.get(JP_STORE_URL) {
+                val httpResponse: HttpResponse = storeHttpClient.get(JP_STORE_URL) {
                     url {
                         parameters.apply {
                             append("limit", limit.toString())
@@ -72,7 +76,7 @@ class StoreApiJP {
                 page += 1
             }
 
-            jpStoreClient.close()
+            storeHttpClient.close()
 
             println("JP store games fetched\n")
 
@@ -94,9 +98,16 @@ data class JpGameDto(
     @SerialName("nsuid") val nsuid: String?,
     val hard: String?,
     val icode: String?,
-    val url: String?,
     val player: List<String>?,  // ["1~2"]
     @SerialName("genre") val categories: List<String>?,  // ["アーケード","アクション","アドベンチャー","その他"]
     @SerialName("lang") val languages: List<String>?,   //  "lang": [ "ja", "pt_US", "en_US" ],
+) {
+    //    https://store-jp.nintendo.com/list/software/70010000057801.html
+    val storeUrl: String?
+        get() {
+            return if (nsuid == null) null
+            else "$JP_PRODUCT_URL${nsuid}.html"
+        }
 
-)
+
+}

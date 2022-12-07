@@ -1,3 +1,6 @@
+package api
+
+import entities.Game
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.okhttp.*
@@ -11,7 +14,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-const val EU_STORE_URL = "https://search.nintendo-europe.com/ru/select"
+const val EU_RU_STORE_URL = "https://search.nintendo-europe.com/ru/select"
+const val EU_EN_STORE_URL = "https://search.nintendo-europe.com/en/select"
+
+// TODO prices
+// TODO merge En and Ru result
 
 class StoreApiEU {
     companion object {
@@ -21,7 +28,7 @@ class StoreApiEU {
 
             val gamesResult = arrayListOf<Game>()
 
-            val euStoreClient = HttpClient(OkHttp) {
+            val storeHttpClient = HttpClient(OkHttp) {
                 install(ContentNegotiation) {
                     json(
                         Json {
@@ -36,12 +43,11 @@ class StoreApiEU {
                 }
             }
 
-
             var start = 0
             val rows = 200
 
             while (true) {
-                val euResponse: HttpResponse = euStoreClient.get(EU_STORE_URL) {
+                val euResponse: HttpResponse = storeHttpClient.get(EU_RU_STORE_URL) {
                     url {
                         parameters.apply {
                             append("q", "*")
@@ -67,9 +73,11 @@ class StoreApiEU {
 
                 if (newItems.isEmpty()) break
 
-                gamesResult.addAll(newItems.map { Game.fromEuDto(it) })
+                val newItemsFiltered = newItems.filter { it.type == "GAME" }
 
-                println("New items eu games size = ${newItems.size}")
+                gamesResult.addAll(newItemsFiltered.map { Game.fromEuDto(it) })
+
+                println("New items eu games size = ${newItemsFiltered.size}")
                 println("Result eu games size: ${gamesResult.size}")
 
 //                todo revert
@@ -78,7 +86,7 @@ class StoreApiEU {
                 start += rows
             }
 
-            euStoreClient.close()
+            storeHttpClient.close()
 
             println("EU store games fetched\n")
 
@@ -104,7 +112,14 @@ data class EuGameDto(
     @SerialName("players_to") val players: Int = 0,
     @SerialName("game_categories_txt") val categories: List<String>?, //  ["Action", "Arcade", "Music", "Shooter"]
     @SerialName("image_url") val imageUrl: String?,
-    @SerialName("image_url_h2x1_s") val imageUrl2x1: String?
+    @SerialName("image_url_h2x1_s") val imageUrl2x1: String?,
+    @SerialName("type") val type: String // "DLC", "GAME"
 
-//    TODO make prices
+//    TODO make store link
+//  "https://search.nintendo-europe.com/en/select"
+//   https://www.nintendo.co.uk/Games/Nintendo-Switch-download-software/-cat-1952107.html
+
+//    "https://search.nintendo-europe.com/ru/select"
+//     https://www.nintendo.ru + /-/-Nintendo-Switch/Mario-Rabbids--1986931.html
+
 )

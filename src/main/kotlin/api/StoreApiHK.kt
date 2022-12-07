@@ -1,3 +1,5 @@
+package api
+
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.okhttp.*
@@ -20,7 +22,7 @@ class StoreApiHK {
 
             val gamesResult = arrayListOf<HkGame>()
 
-            val hkStoreClient = HttpClient(OkHttp) {
+            val storeHttpClient = HttpClient(OkHttp) {
                 install(ContentNegotiation) {
                     json(
                         Json {
@@ -33,7 +35,7 @@ class StoreApiHK {
                 }
             }
 
-            val response: HttpResponse = hkStoreClient.get(HK_STORE_URL)
+            val response: HttpResponse = storeHttpClient.get(HK_STORE_URL)
 
             val responseStatusCode = response.status.value
 
@@ -46,7 +48,7 @@ class StoreApiHK {
                 gamesResult.addAll(games)
             }
 
-            hkStoreClient.close()
+            storeHttpClient.close()
 
             println("HK store games fetched\n")
 

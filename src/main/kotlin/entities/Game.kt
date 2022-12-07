@@ -1,3 +1,10 @@
+package entities
+
+import api.EuGameDto
+import api.GameExtras
+import api.JpGameDto
+import api.NaGameDto
+
 data class Game(
     val title: String,
     val description: String,
@@ -23,6 +30,7 @@ data class Game(
                 nsuid = euGame.nsuid?.firstOrNull() ?: "",
                 productCode = euGame.productCode?.firstOrNull() ?: "",
                 players = euGame.players,
+
 //              TODO generate url to store
                 storeUrl = euGame.url ?: "",
                 regionCode = RegionCode.EU,
@@ -50,8 +58,7 @@ data class Game(
                 nsuid = jpGame.nsuid ?: "",
                 productCode = productCode,
                 players = players,
-//              TODO generate store url
-                storeUrl = jpGame.icode ?: "",
+                storeUrl = jpGame.storeUrl ?: "",
                 regionCode = RegionCode.JP,
                 imageUrl = "",
                 imageUrl2x1 = "",
@@ -61,7 +68,7 @@ data class Game(
         }
 
         fun fromNaDto(naGame: NaGameDto, gameExtras: GameExtras? = null): Game {
-            val players = Regex("[^\\d]*").replace(naGame.players.toString(), "").toInt()
+            val players = Regex("\\D*").replace(naGame.players.toString(), "").toInt()
             val languages = gameExtras?.languages ?: emptyList()
             val productCode = gameExtras?.productCode ?: ""
 
@@ -84,6 +91,3 @@ data class Game(
     }
 }
 
-enum class RegionCode {
-    NA, EU, JP, HK
-}
