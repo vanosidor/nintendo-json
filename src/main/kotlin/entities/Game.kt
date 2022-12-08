@@ -17,7 +17,6 @@ data class Game(
     val imageUrl2x1: String,
     val languages: List<String>,
     val categories: List<String>
-
 ) {
     companion object Factory {
         fun fromEuDto(euGame: EuGameDto): Game {
@@ -88,5 +87,17 @@ data class Game(
 
 //        TODO make factory methods for HK
     }
+
+    val uniqueId: String?
+        get() {
+            if (productCode.isEmpty()) return null
+
+            return when (regionCode) {
+                RegionCode.JP -> productCode.substring(3..6)
+                RegionCode.EU, RegionCode.NA -> productCode.substring(4..7)
+                RegionCode.HK -> null
+            }
+        }
 }
 
+data class GameMerged(val naGame: Game?, val euGame: Game?, val jpGame: Game?)
