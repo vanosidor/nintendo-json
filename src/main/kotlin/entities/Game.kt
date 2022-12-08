@@ -20,7 +20,6 @@ data class Game(
 
 ) {
     companion object Factory {
-
         fun fromEuDto(euGame: EuGameDto): Game {
             val languages: List<String> = euGame.languages?.firstOrNull()?.split(",") ?: emptyList()
 

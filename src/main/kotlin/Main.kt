@@ -16,15 +16,27 @@ suspend fun main() {
 //    TODO merge all store results
     val startTime = System.currentTimeMillis()
 
+    // EU get data
+    //    TODO merge prices into model
     val euGames = StoreApiEU.fetchGames()
-
     val euNsuids = euGames.map { it.nsuid }
+//    val pricesRu = PricesApi.fetchPricesForCountry(country = "RU", nsuids = euNsuids)
+//    val pricesGB = PricesApi.fetchPricesForCountry(country = "GB", nsuids = euNsuids)
 
-    val pricesRu = PricesApi.fetchPricesForCountry(country = "RU", nsuids = euNsuids)
 
+    // JP get data
+    //    TODO merge into jp games model
 //    val jpGames = api.StoreApiJP.fetchGames()
-//    val hkGames = api.StoreApiHK.fetchGames()
+//    val jpNsuids = jpGames.map { it.nsuid }
+//    val pricesJP = PricesApi.fetchPricesForCountry(country = "JP", nsuids = jpNsuids)
+
+    //  NA get data
 //    val naGames = api.StoreApiNA.fetchGames()
+//    val naNsuids = naGames.map { it.nsuid }
+//    val pricesUS = PricesApi.fetchPricesForCountry("US", naNsuids)
+
+    //    val hkGames = api.StoreApiHK.fetchGames()
+
 
     println("Get all items completed successfully")
     println("Total time elapsed: ${System.currentTimeMillis() - startTime} ms")

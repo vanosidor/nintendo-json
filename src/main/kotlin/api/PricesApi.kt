@@ -20,6 +20,7 @@ class PricesApi {
 
         @OptIn(ExperimentalSerializationApi::class)
         suspend fun fetchPricesForCountry(country: String, nsuids: List<String>): List<Price> {
+            println("Get prices for $country started")
 
             if (nsuids.isEmpty()) return emptyList()
 
@@ -60,7 +61,7 @@ class PricesApi {
 
                 val statusCode = httpResponse.status.value
 
-                println("Get prices for $country: $statusCode")
+                println("Get prices: $statusCode")
 
                 start += rowCount
 
@@ -71,13 +72,7 @@ class PricesApi {
                 val pricesResponseDto: PricesResponseDto = httpResponse.body()
 
                 val prices = pricesResponseDto.prices.map {
-//                    TODO move to from dto
-//                     TODO fix serialization
-                    Price(
-                        value = it.regularPrice.rawValue,
-                        currency = it.regularPrice.currency,
-                        saleValue = null
-                    )
+                    Price.fromDto(it)
                 }
 
                 result.addAll(prices)
@@ -85,6 +80,7 @@ class PricesApi {
 
             httpClient.close()
 
+            println("Get prices for $country completed\n")
             return result
         }
     }
@@ -97,10 +93,18 @@ data class PricesResponseDto(val prices: List<PriceDto>)
 data class PriceDto(
     @SerialName("title_id") val titleId: String,
     @SerialName("sales_status") val salesStatus: String,
-    @SerialName("regular_price") val regularPrice: RegularPrice
+    @SerialName("regular_price") val regularPrice: RegularPrice?,
+    @SerialName("discount_price") val discountPrice: DiscountPrice?
 )
 
 @Serializable
 data class RegularPrice(
     val amount: String, val currency: String, @SerialName("raw_value") val rawValue: Double
+)
+
+@Serializable
+data class DiscountPrice(
+    val amount: String, val currency: String, @SerialName("raw_value") val rawValue: Double,
+    @SerialName("start_datetime") val startDate: String,
+    @SerialName("end_datetime") val endDate: String
 )
