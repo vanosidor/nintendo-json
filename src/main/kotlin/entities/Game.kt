@@ -4,6 +4,7 @@ import api.EuGameDto
 import api.GameExtras
 import api.JpGameDto
 import api.NaGameDto
+import java.lang.NumberFormatException
 
 data class Game(
     val title: String,
@@ -16,7 +17,8 @@ data class Game(
     val imageUrl: String,
     val imageUrl2x1: String,
     val languages: List<String>,
-    val categories: List<String>
+    val categories: List<String>,
+    val prices: List<Price>
 ) {
     companion object Factory {
         fun fromEuDto(euGame: EuGameDto): Game {
@@ -28,14 +30,13 @@ data class Game(
                 nsuid = euGame.nsuid?.firstOrNull() ?: "",
                 productCode = euGame.productCode?.firstOrNull() ?: "",
                 players = euGame.players,
-
-//              TODO generate url to store
                 storeUrl = euGame.url ?: "",
                 regionCode = RegionCode.EU,
                 imageUrl = euGame.imageUrl ?: "",
                 imageUrl2x1 = euGame.imageUrl2x1 ?: "",
                 languages = languages,
-                categories = euGame.categories ?: emptyList()
+                categories = euGame.categories ?: emptyList(),
+                prices = emptyList()
             )
         }
 
@@ -62,11 +63,18 @@ data class Game(
                 imageUrl2x1 = "",
                 languages = jpGame.languages ?: emptyList(),
                 categories = jpGame.categories ?: emptyList(),
+                prices = emptyList()
             )
         }
 
         fun fromNaDto(naGame: NaGameDto, gameExtras: GameExtras? = null): Game {
-            val players = Regex("\\D*").replace(naGame.players.toString(), "").toInt()
+            val players = try {
+                Regex("\\D*").replace(naGame.players.toString(), "").toInt()
+            } catch (e: NumberFormatException) {
+                println(e)
+                0
+            }
+
             val languages = gameExtras?.languages ?: emptyList()
             val productCode = gameExtras?.productCode ?: ""
 
@@ -82,12 +90,14 @@ data class Game(
                 imageUrl2x1 = "",
                 languages = languages,
                 categories = naGame.categories ?: emptyList(),
+                prices = emptyList()
             )
         }
 
-//        TODO make factory methods for HK
+//       TODO make factory methods for HK
     }
 
+    // Not unique, has some items with same uniqueId
     val uniqueId: String?
         get() {
             if (productCode.isEmpty()) return null
@@ -100,4 +110,3 @@ data class Game(
         }
 }
 
-data class GameMerged(val naGame: Game?, val euGame: Game?, val jpGame: Game?)

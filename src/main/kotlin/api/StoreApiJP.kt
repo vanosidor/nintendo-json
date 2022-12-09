@@ -19,7 +19,7 @@ const val JP_PRODUCT_URL = "https://store-jp.nintendo.com/list/software/"
 class StoreApiJP {
     companion object {
         @OptIn(ExperimentalSerializationApi::class)
-        suspend fun fetchGames(): List<Game> {
+        suspend fun fetchGames(maxPages: Int = Integer.MAX_VALUE): List<Game> {
             println("JP store fetch games started")
 
             val gamesResult = arrayListOf<Game>()
@@ -70,8 +70,7 @@ class StoreApiJP {
                 println("New items JP games size = ${newItems.size}")
                 println("Result JP games size: ${gamesResult.size}")
 
-//              TODO revert revert
-                if (page >= 3) break
+                if (page >= maxPages) break
 
                 page += 1
             }

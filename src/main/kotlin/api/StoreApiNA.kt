@@ -16,16 +16,16 @@ import kotlinx.serialization.json.decodeFromJsonElement
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 
-// TODO create new APP_ID and api.API_KEY
-const val APPLICATION_ID = "U3B6GR4UA3"
-const val API_KEY = "c4da8be7fd29f0f5bfa42920b0a99dc7"
-const val INDEX = "ncom_game_en_us"
-const val PLATFORM_CODE = "7001"
-
-const val NA_PRODUCT_URL = "https://www.nintendo.com/store/products/"
 
 class StoreApiNA {
+
     companion object {
+        // TODO create new APP_ID and api.API_KEY
+        private const val APPLICATION_ID = "U3B6GR4UA3"
+        private const val API_KEY = "c4da8be7fd29f0f5bfa42920b0a99dc7"
+        private const val INDEX = "ncom_game_en_us"
+        private const val PLATFORM_CODE = "7001"
+
         @OptIn(ExperimentalSerializationApi::class)
         val json: Json = Json {
             ignoreUnknownKeys = true
@@ -87,7 +87,7 @@ class StoreApiNA {
                 println("Result NA games size: ${gamesResult.size}")
 
 //              TODO revert
-                if (gamesResult.size >= 20) break
+//                if (gamesResult.size >= 100) break
 
                 if (emptyPages == 5) break
 
@@ -126,6 +126,7 @@ class StoreApiNA {
 
 @Serializable
 data class NaGameDto(
+
     val title: String?,
     val description: String?,
     val url: String?, // not used, redirect to storeUrl
@@ -138,8 +139,14 @@ data class NaGameDto(
     @SerialName("boxart") val image: String?, // image but not square like for EU store
     @SerialName("horizontalHeaderImage") val horizontalHeaderImage: String?,
 ) {
+    companion object {
+        const val NA_GAME_STORE_URL = "https://www.nintendo.com/store/products/"
+    }
+
     val storeUrl: String
-        get() = "$NA_PRODUCT_URL$slug/"
+        get() = "$NA_GAME_STORE_URL$slug/"
+
+
 }
 
 @Serializable

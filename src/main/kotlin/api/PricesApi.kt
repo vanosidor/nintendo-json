@@ -1,6 +1,7 @@
 package api
 
 import entities.Price
+import entities.StoreCountry
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.okhttp.*
@@ -13,13 +14,12 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-// TODO parse date if need
 class PricesApi {
     companion object {
         private const val PRICE_API_URL = "https://api.ec.nintendo.com/v1/price"
 
         @OptIn(ExperimentalSerializationApi::class)
-        suspend fun fetchPricesForCountry(country: String, nsuids: List<String>): List<Price> {
+        suspend fun fetchPricesForCountry(country: StoreCountry, nsuids: List<String>): List<Price> {
             println("Get prices for $country started")
 
             if (nsuids.isEmpty()) return emptyList()
@@ -52,7 +52,7 @@ class PricesApi {
                 val httpResponse: HttpResponse = httpClient.get(PRICE_API_URL) {
                     url {
                         parameters.apply {
-                            append("country", country)
+                            append("country", country.value)
                             append("lang", "en")
                             append("ids", ids)
                         }
@@ -72,7 +72,7 @@ class PricesApi {
                 val pricesResponseDto: PricesResponseDto = httpResponse.body()
 
                 val prices = pricesResponseDto.prices.map {
-                    Price.fromDto(it)
+                    Price.fromDto(it, country)
                 }
 
                 result.addAll(prices)

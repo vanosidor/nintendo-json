@@ -15,17 +15,63 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 
-// TODO prices
-// TODO merge En and Ru result
-
 class StoreApiEU {
+    enum class EuStore(val url: String) {
+        Ru(EU_RU_GAME_SEARCH_URL),
+        En(EU_EN_GAME_SEARCH_URL)
+    }
+
     companion object {
-        private const val EU_RU_STORE_URL = "https://search.nintendo-europe.com/ru/select"
-        const val EU_EN_STORE_URL = "https://search.nintendo-europe.com/en/select"
+        private const val EU_RU_GAME_SEARCH_URL = "https://search.nintendo-europe.com/ru/select"
+        private const val EU_EN_GAME_SEARCH_URL = "https://search.nintendo-europe.com/en/select"
+
+        private const val EU_RU_GAME_LINK_URL = "https://www.nintendo.ru"
+        private const val EU_EN_GAME_LINK_URL = "https://www.nintendo.co.uk"
+
+        suspend fun fetchGames(): List<Game> {
+            val gamesRu = fetchEuStoreGames(EuStore.Ru)
+            val gamesEn = fetchEuStoreGames(EuStore.En)
+
+            // Important: valid game url and some other fields make after merge operation
+            return mergeEnRuGames(gamesEn, gamesRu)
+        }
+
+        private fun mergeEnRuGames(enGames: List<Game>, ruGames: List<Game>): List<Game> {
+            val result = arrayListOf<Game>()
+            val ruGamesCopy = ruGames.toMutableList()
+
+            for (enGame in enGames) {
+                val ruGame = ruGamesCopy.firstOrNull { it.nsuid == enGame.nsuid }
+
+                if (ruGame != null) {
+                    val storeUrl = getStoreUrl(ruGame.storeUrl, EuStore.Ru)
+                    val gameModified =
+                        enGame.copy(title = ruGame.title, storeUrl = storeUrl, description = ruGame.description)
+                    result.add(gameModified)
+
+                    ruGamesCopy.remove(ruGame)
+                } else {
+                    val storeUrl = getStoreUrl(enGame.storeUrl, EuStore.En)
+                    val gameModified = enGame.copy(storeUrl = storeUrl)
+                    result.add(gameModified)
+                }
+            }
+
+            result.addAll(ruGamesCopy)
+
+            return result
+        }
+
+        private fun getStoreUrl(slug: String, store: EuStore): String {
+            return when (store) {
+                EuStore.Ru -> "$EU_RU_GAME_LINK_URL$slug"
+                EuStore.En -> "$EU_EN_GAME_LINK_URL$slug"
+            }
+        }
 
         @OptIn(ExperimentalSerializationApi::class)
-        suspend fun fetchGames(): List<Game> {
-            println("EU store fetch games started")
+        private suspend fun fetchEuStoreGames(store: EuStore): List<Game> {
+            println("EU store fetch games $store started")
 
             val gamesResult = arrayListOf<Game>()
 
@@ -48,7 +94,7 @@ class StoreApiEU {
             val rows = 200
 
             while (true) {
-                val httpResponse: HttpResponse = httpClient.get(EU_RU_STORE_URL) {
+                val httpResponse: HttpResponse = httpClient.get(store.url) {
                     url {
                         parameters.apply {
                             append("q", "*")
@@ -81,15 +127,14 @@ class StoreApiEU {
                 println("New items eu games size = ${newItemsFiltered.size}")
                 println("Result eu games size: ${gamesResult.size}")
 
-//                todo revert
-                if (start >= 200) break
+//                if (start >= 800) break
 
                 start += rows
             }
 
             httpClient.close()
 
-            println("EU store games fetched\n")
+            println("EU $store store games fetched\n")
 
             return gamesResult
         }
@@ -115,12 +160,5 @@ data class EuGameDto(
     @SerialName("image_url") val imageUrl: String?,
     @SerialName("image_url_h2x1_s") val imageUrl2x1: String?,
     @SerialName("type") val type: String // "DLC", "GAME"
-
-//    TODO make store link
-//  "https://search.nintendo-europe.com/en/select"
-//   https://www.nintendo.co.uk/Games/Nintendo-Switch-download-software/-cat-1952107.html
-
-//    "https://search.nintendo-europe.com/ru/select"
-//     https://www.nintendo.ru + /-/-Nintendo-Switch/Mario-Rabbids--1986931.html
-
 )
+

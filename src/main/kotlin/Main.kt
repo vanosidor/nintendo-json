@@ -2,6 +2,9 @@ import api.PricesApi
 import api.StoreApiEU
 import entities.Game
 import entities.GameMerged
+import entities.Price
+import entities.StoreCountry
+import java.io.File
 
 //TODO move to readme
 // https://github.com/fedecalendino/nintendeals
@@ -16,30 +19,68 @@ import entities.GameMerged
 suspend fun main() {
     val startTime = System.currentTimeMillis()
 
-    //    TODO merge prices into model
-    val euGames = StoreApiEU.fetchGames()
-    val euNsuids = euGames.map { it.nsuid }
-    val pricesRu = PricesApi.fetchPricesForCountry("RU", euNsuids)
-    val pricesGB = PricesApi.fetchPricesForCountry("GB", euNsuids)
+    val games = getAllGames()
 
+    File("merged_games_result.txt").printWriter().use { out ->
+        games.forEachIndexed { index, it ->
+            out.println("${index + 1} ${it.title} ${it.id}")
+        }
+    }
 
-    //    TODO merge into jp games model
-    val jpGames = api.StoreApiJP.fetchGames()
-    val jpNsuids = jpGames.map { it.nsuid }
-    val pricesJP = PricesApi.fetchPricesForCountry("JP", jpNsuids)
+    println("All tasks completed: elapsed time = ${System.currentTimeMillis() - startTime}ms, games count = ${games.size}")
+}
 
-    // TODO merge prices
-    val naGames = api.StoreApiNA.fetchGames()
-    val naNsuids = naGames.map { it.nsuid }
-    val pricesUS = PricesApi.fetchPricesForCountry("US", naNsuids)
+suspend fun getAllGames(): List<GameMerged> {
+    val euGames = getEuGames()
+    val jpGames = getJpGames()
+    val naGames = getNaGames()
 
-    //    val hkGames = api.StoreApiHK.fetchGames()
+    return mergeGames(euGames, jpGames, naGames)
+}
 
-//    TODO merge all games
-    val mergedGames = mergeGames(euGames, jpGames, naGames)
+private suspend fun getEuGames(): List<Game> {
+    val gamesWithoutPrices = StoreApiEU.fetchGames()
 
-//    TODO print to file
-    println("All tasks completed: elapsed time = ${System.currentTimeMillis() - startTime}ms, games count = ${mergedGames.size}")
+    val nsuids = gamesWithoutPrices.map { it.nsuid }
+
+    val pricesRussian = PricesApi.fetchPricesForCountry(StoreCountry.RussianFederation, nsuids)
+    val pricesGreatBritain = PricesApi.fetchPricesForCountry(StoreCountry.UnitedKingdom, nsuids)
+
+    return mergePricesIntoGames(gamesWithoutPrices, pricesRussian, pricesGreatBritain)
+}
+
+private suspend fun getJpGames(): List<Game> {
+    val gamesWithoutPrices = api.StoreApiJP.fetchGames()
+
+    val nsuids = gamesWithoutPrices.map { it.nsuid }
+
+    val pricesJapan = PricesApi.fetchPricesForCountry(StoreCountry.Japan, nsuids)
+
+    return mergePricesIntoGames(gamesWithoutPrices, pricesJapan)
+}
+
+private suspend fun getNaGames(): List<Game> {
+    val gamesWithoutPrices = api.StoreApiNA.fetchGames()
+
+    val nsuids = gamesWithoutPrices.map { it.nsuid }
+
+    val pricesUnitedStates = PricesApi.fetchPricesForCountry(StoreCountry.UnitedState, nsuids)
+    val pricesBrazil = PricesApi.fetchPricesForCountry(StoreCountry.Brazil, nsuids)
+
+    return mergePricesIntoGames(gamesWithoutPrices, pricesUnitedStates, pricesBrazil)
+}
+
+private fun mergePricesIntoGames(games: List<Game>, vararg prices: List<Price>): List<Game> {
+    return games.map { game ->
+        val pricesResult = arrayListOf<Price>()
+        for (priceList in prices) {
+            val price = priceList.firstOrNull { it.nsuid == game.nsuid }
+
+            if (price != null) pricesResult.add(price)
+        }
+
+        game.copy(prices = pricesResult)
+    }
 }
 
 private fun mergeGames(euGames: List<Game>, jpGames: List<Game>, naGames: List<Game>): List<GameMerged> {

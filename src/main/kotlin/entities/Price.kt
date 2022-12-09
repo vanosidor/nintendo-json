@@ -6,6 +6,7 @@ import java.util.Date
 
 data class Price(
     val nsuid: String,
+    val country: StoreCountry,
     val value: Double?,
     val currency: String?,
     val saleValue: Double?,
@@ -13,7 +14,7 @@ data class Price(
     val saleEndDate: Date?,
 ) {
     companion object {
-        fun fromDto(priceDto: PriceDto): Price {
+        fun fromDto(priceDto: PriceDto, country: StoreCountry): Price {
             val nsuid = priceDto.titleId
             val currency = priceDto.regularPrice?.currency
             val value = priceDto.regularPrice?.rawValue
@@ -27,7 +28,8 @@ data class Price(
                 value = value,
                 saleValue = saleValue,
                 saleStartDate = startDate,
-                saleEndDate = endDate
+                saleEndDate = endDate,
+                country = country
             )
         }
 
