@@ -6,7 +6,7 @@ import entities.Price
 import entities.StoreCountry
 import java.io.File
 
-//TODO move to readme
+// TODO move to readme
 // https://github.com/fedecalendino/nintendeals
 // https://github.com/fedecalendino/nintendeals/blob/main/nintendeals/commons/classes/eshops.py
 
@@ -14,7 +14,6 @@ import java.io.File
 
 // too old api
 // https://github.com/briansamuel/eshop-game
-
 
 suspend fun main() {
     val startTime = System.currentTimeMillis()
@@ -34,8 +33,9 @@ suspend fun getAllGames(): List<GameMerged> {
     val euGames = getEuGames()
     val jpGames = getJpGames()
     val naGames = getNaGames()
+    val hkGames = getHkGames()
 
-    return mergeGames(euGames, jpGames, naGames)
+    return mergeGames(euGames, jpGames, naGames, hkGames)
 }
 
 private suspend fun getEuGames(): List<Game> {
@@ -70,6 +70,14 @@ private suspend fun getNaGames(): List<Game> {
     return mergePricesIntoGames(gamesWithoutPrices, pricesUnitedStates, pricesBrazil)
 }
 
+private suspend fun getHkGames(): List<Game> {
+    val gamesWithoutPrices = api.StoreApiHK.fetchGames()
+
+    val nsuids = gamesWithoutPrices.map { it.nsuid }
+    val pricesHongKong = PricesApi.fetchPricesForCountry(StoreCountry.HongKong, nsuids)
+    return mergePricesIntoGames(gamesWithoutPrices, pricesHongKong)
+}
+
 private fun mergePricesIntoGames(games: List<Game>, vararg prices: List<Price>): List<Game> {
     return games.map { game ->
         val pricesResult = arrayListOf<Price>()
@@ -83,7 +91,12 @@ private fun mergePricesIntoGames(games: List<Game>, vararg prices: List<Price>):
     }
 }
 
-private fun mergeGames(euGames: List<Game>, jpGames: List<Game>, naGames: List<Game>): List<GameMerged> {
+private fun mergeGames(
+    euGames: List<Game>,
+    jpGames: List<Game>,
+    naGames: List<Game>,
+    hkGames: List<Game>
+): List<GameMerged> {
     val startTime = System.currentTimeMillis()
 
     val result = arrayListOf<GameMerged>()
@@ -101,7 +114,7 @@ private fun mergeGames(euGames: List<Game>, jpGames: List<Game>, naGames: List<G
 
             result.add(GameMerged(naGame, euGame, jpGame))
         } else {
-            result.add(GameMerged(euGame = euGame, jpGame = null, naGame = null))
+            result.add(GameMerged(euGame = euGame))
         }
     }
 
@@ -112,14 +125,18 @@ private fun mergeGames(euGames: List<Game>, jpGames: List<Game>, naGames: List<G
             val jpGame = jpGamesCopy.firstOrNull { it.uniqueId == naGameId }
             jpGamesCopy.remove(jpGame)
 
-            result.add(GameMerged(naGame = naGame, euGame = null, jpGame = jpGame))
+            result.add(GameMerged(naGame = naGame, jpGame = jpGame))
         } else {
-            result.add(GameMerged(euGame = null, jpGame = null, naGame = naGame))
+            result.add(GameMerged(jpGame = null, naGame = naGame))
         }
     }
 
     for (jpGame in jpGamesCopy) {
-        result.add(GameMerged(jpGame = jpGame, euGame = null, naGame = null))
+        result.add(GameMerged(jpGame = jpGame))
+    }
+
+    for (hkGame in hkGames) {
+        result.add(GameMerged(hkGame = hkGame))
     }
 
     println("Merge games completed: elapsedTime = ${System.currentTimeMillis() - startTime}ms")

@@ -1,5 +1,8 @@
 package api
 
+import GameExtras
+import GameNA
+import PropsDto
 import com.algolia.search.client.ClientSearch
 import com.algolia.search.dsl.requestOptions
 import com.algolia.search.model.APIKey
@@ -8,8 +11,6 @@ import com.algolia.search.model.IndexName
 import com.algolia.search.model.search.Query
 import entities.Game
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromJsonElement
@@ -20,6 +21,7 @@ import org.jsoup.nodes.Document
 class StoreApiNA {
 
     companion object {
+
         // TODO create new APP_ID and api.API_KEY
         private const val APPLICATION_ID = "U3B6GR4UA3"
         private const val API_KEY = "c4da8be7fd29f0f5bfa42920b0a99dc7"
@@ -34,7 +36,6 @@ class StoreApiNA {
         }
 
         suspend fun fetchGames(): List<Game> {
-
             println("NA store fetch games started")
 
             val gamesResult = arrayListOf<Game>()
@@ -65,7 +66,7 @@ class StoreApiNA {
                     index.search(Query("$PLATFORM_CODE$currentFormatted"), requestOptions = requestOptions)
 
                 val games = responseSearch.hits.map {
-                    json.decodeFromJsonElement<NaGameDto>(it.json)
+                    json.decodeFromJsonElement<GameNA>(it.json)
                 }
 
                 if (games.isEmpty()) {
@@ -85,9 +86,6 @@ class StoreApiNA {
 
                 println("New items NA games size = ${games.size}")
                 println("Result NA games size: ${gamesResult.size}")
-
-//              TODO revert
-//                if (gamesResult.size >= 100) break
 
                 if (emptyPages == 5) break
 
@@ -123,45 +121,3 @@ class StoreApiNA {
     }
 }
 
-
-@Serializable
-data class NaGameDto(
-
-    val title: String?,
-    val description: String?,
-    val url: String?, // not used, redirect to storeUrl
-    val productCode: String?, // need get with extra data
-    val nsuid: String?,
-    val slug: String?,
-    @SerialName("numOfPlayers") val players: String?, // "up to 8 players"
-    val languages: List<String>?, // need get with extra data
-    @SerialName("genres") val categories: List<String>?, // ["Platformer", "Action"]
-    @SerialName("boxart") val image: String?, // image but not square like for EU store
-    @SerialName("horizontalHeaderImage") val horizontalHeaderImage: String?,
-) {
-    companion object {
-        const val NA_GAME_STORE_URL = "https://www.nintendo.com/store/products/"
-    }
-
-    val storeUrl: String
-        get() = "$NA_GAME_STORE_URL$slug/"
-
-
-}
-
-@Serializable
-data class PropsDto(val props: Props)
-
-@Serializable
-data class Props(val pageProps: PageProps)
-
-@Serializable
-data class PageProps(val product: Product)
-
-@Serializable
-data class Product(
-    val productCode: String,
-    val supportedLanguages: List<String> = listOf("English")
-)
-
-data class GameExtras(val languages: List<String>, val productCode: String)

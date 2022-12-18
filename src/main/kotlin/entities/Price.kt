@@ -1,6 +1,6 @@
 package entities
 
-import api.PriceDto
+import PriceDto
 import java.time.Instant
 import java.util.Date
 

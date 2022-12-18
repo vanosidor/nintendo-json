@@ -1,5 +1,6 @@
 package api
 
+import EuStoreResponseRootDto
 import entities.Game
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -10,8 +11,6 @@ import io.ktor.client.statement.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 
@@ -91,14 +90,14 @@ class StoreApiEU {
             }
 
             var start = 0
-            val rows = 200
+            val rows = 99999
 
             while (true) {
                 val httpResponse: HttpResponse = httpClient.get(store.url) {
                     url {
                         parameters.apply {
                             append("q", "*")
-                            append("sort", "sorting_title asc")
+                            append("sort", "popularity asc")
                             append("wt", "json")
                             append("rows", rows.toString())
                             append("start", start.toString())
@@ -122,12 +121,15 @@ class StoreApiEU {
 
                 val newItemsFiltered = newItems.filter { it.type == "GAME" }
 
-                gamesResult.addAll(newItemsFiltered.map { Game.fromEuDto(it) })
+                gamesResult.addAll(newItemsFiltered.mapIndexed { index, game ->
+                    Game.fromEuDto(
+                        game,
+                        popularity = newItemsFiltered.size - index
+                    )
+                })
 
                 println("New items eu games size = ${newItemsFiltered.size}")
                 println("Result eu games size: ${gamesResult.size}")
-
-//                if (start >= 800) break
 
                 start += rows
             }
@@ -141,24 +143,4 @@ class StoreApiEU {
     }
 }
 
-@Serializable
-data class EuStoreResponseRootDto(val response: EuStoreResponseDto)
-
-@Serializable
-data class EuStoreResponseDto(val numFound: Int, val docs: List<EuGameDto>)
-
-@Serializable
-data class EuGameDto(
-    val title: String?,
-    @SerialName("excerpt") val description: String?,
-    @SerialName("nsuid_txt") val nsuid: List<String>?,
-    @SerialName("product_code_txt") val productCode: List<String>?,
-    val url: String?, // /DLC/-InfiniPrison-1800893.html
-    @SerialName("language_availability") val languages: List<String>?, // ["english,french,german,italian,portuguese,spanish"]
-    @SerialName("players_to") val players: Int = 0,
-    @SerialName("game_categories_txt") val categories: List<String>?, //  ["Action", "Arcade", "Music", "Shooter"]
-    @SerialName("image_url") val imageUrl: String?,
-    @SerialName("image_url_h2x1_s") val imageUrl2x1: String?,
-    @SerialName("type") val type: String // "DLC", "GAME"
-)
 

@@ -1,17 +1,18 @@
 package api
 
+import PricesResponseDto
 import entities.Price
 import entities.StoreCountry
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.okhttp.*
+import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.client.plugins.logging.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 class PricesApi {
@@ -19,7 +20,8 @@ class PricesApi {
         private const val PRICE_API_URL = "https://api.ec.nintendo.com/v1/price"
 
         @OptIn(ExperimentalSerializationApi::class)
-        suspend fun fetchPricesForCountry(country: StoreCountry, nsuids: List<String>): List<Price> {
+        suspend fun fetchPricesForCountry(country: StoreCountry, _nsuids: List<String>): List<Price> {
+            val nsuids = _nsuids.filter { it.isNotEmpty() }
             println("Get prices for $country started")
 
             if (nsuids.isEmpty()) return emptyList()
@@ -35,6 +37,15 @@ class PricesApi {
                         },
                     )
                 }
+                install(HttpTimeout) {
+                    connectTimeoutMillis = 10000
+                }
+
+                install(HttpRequestRetry) // 3 retries by default and exponential
+
+                install(Logging) {
+                    level = LogLevel.BODY
+                }
             }
 
             val rowCount = 50
@@ -43,12 +54,14 @@ class PricesApi {
 
             while (start < nsuids.size) {
                 val lastIndex = if (start + rowCount >= nsuids.size) nsuids.size else start + rowCount
-                val chunk = nsuids.subList(start, lastIndex)
+                val chunk = nsuids
+                    .subList(start, lastIndex)
 
                 val ids = chunk.joinToString(",")
                 println("nsuids joined params:")
                 println(ids)
 
+                // may cause ConnectTimeoutException
                 val httpResponse: HttpResponse = httpClient.get(PRICE_API_URL) {
                     url {
                         parameters.apply {
@@ -61,21 +74,19 @@ class PricesApi {
 
                 val statusCode = httpResponse.status.value
 
-                println("Get prices: $statusCode")
+                println("Get prices $country: $statusCode")
 
                 start += rowCount
 
-                if (statusCode != 200) {
-                    break
+                if (statusCode == 200) {
+                    val pricesResponseDto: PricesResponseDto = httpResponse.body()
+
+                    val prices = pricesResponseDto.prices.map {
+                        Price.fromDto(it, country)
+                    }
+
+                    result.addAll(prices)
                 }
-
-                val pricesResponseDto: PricesResponseDto = httpResponse.body()
-
-                val prices = pricesResponseDto.prices.map {
-                    Price.fromDto(it, country)
-                }
-
-                result.addAll(prices)
             }
 
             httpClient.close()
@@ -85,26 +96,3 @@ class PricesApi {
         }
     }
 }
-
-@Serializable
-data class PricesResponseDto(val prices: List<PriceDto>)
-
-@Serializable
-data class PriceDto(
-    @SerialName("title_id") val titleId: String,
-    @SerialName("sales_status") val salesStatus: String,
-    @SerialName("regular_price") val regularPrice: RegularPrice?,
-    @SerialName("discount_price") val discountPrice: DiscountPrice?
-)
-
-@Serializable
-data class RegularPrice(
-    val amount: String, val currency: String, @SerialName("raw_value") val rawValue: Double
-)
-
-@Serializable
-data class DiscountPrice(
-    val amount: String, val currency: String, @SerialName("raw_value") val rawValue: Double,
-    @SerialName("start_datetime") val startDate: String,
-    @SerialName("end_datetime") val endDate: String
-)

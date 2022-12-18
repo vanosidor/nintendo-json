@@ -6,4 +6,5 @@ enum class StoreCountry(val value: String) {
     RussianFederation("RU"),
     Japan("JP"),
     UnitedKingdom("GB"),
+    HongKong("HK"),
 }

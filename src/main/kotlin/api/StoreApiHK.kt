@@ -1,5 +1,7 @@
 package api
 
+import GameHK
+import entities.Game
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.okhttp.*
@@ -8,19 +10,17 @@ import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-
-const val HK_STORE_URL = "https://www.nintendo.com.hk/data/json/switch_software.json"
 
 class StoreApiHK {
     companion object {
+        private const val HK_STORE_URL = "https://www.nintendo.com.hk/data/json/switch_software.json"
+
         @OptIn(ExperimentalSerializationApi::class)
-        suspend fun fetchGames(): List<HkGame> {
+        suspend fun fetchGames(): List<Game> {
             println("HK store fetch games started")
 
-            val gamesResult = arrayListOf<HkGame>()
+            val games = arrayListOf<Game>()
 
             val storeHttpClient = HttpClient(OkHttp) {
                 install(ContentNegotiation) {
@@ -43,26 +43,20 @@ class StoreApiHK {
                 println("HK statusCode: $responseStatusCode")
             } else {
                 println("HK store fetch games status = $responseStatusCode")
-                val games: List<HkGame> = response.body()
-                println("HK store games size total: ${games.size}")
-                gamesResult.addAll(games)
+                val hkGames: List<GameHK> = response.body()
+
+                games.addAll(hkGames.map { Game.fromHkDto(it) })
             }
 
             storeHttpClient.close()
 
             println("HK store games fetched\n")
 
-            return gamesResult
+            val result = games.filter { it.nsuid.isNotEmpty() }
+
+            println("HK store games size total: ${result.size}")
+
+            return result
         }
     }
 }
-
-@Serializable
-data class HkGame(
-    val title: String,
-    @SerialName("lang") val language: String, // "CN" or empty string
-    val link: String, // link to store "https://store.nintendo.com.hk/70010000023476"
-    @SerialName("product_code") val productCode: String, // "HACPATJFA"
-    val price: String,  // 399
-    val category: String,  // "模擬RPG" or "RPG"
-)

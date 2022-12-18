@@ -1,6 +1,13 @@
 package entities
 
-data class GameMerged(val naGame: Game?, val euGame: Game?, val jpGame: Game?) {
+
+// TODO add popularity
+data class GameMerged(
+    val euGame: Game? = null,
+    val naGame: Game? = null,
+    val jpGame: Game? = null,
+    val hkGame: Game? = null
+) {
     val id: String?
         get() {
             if (euGame?.uniqueId != null) return euGame.uniqueId

@@ -1,5 +1,6 @@
 package api
 
+import JpStoreResponseDto
 import entities.Game
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -9,15 +10,14 @@ import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-const val JP_STORE_URL = "https://search.nintendo.jp/nintendo_soft/search.json"
-const val JP_PRODUCT_URL = "https://store-jp.nintendo.com/list/software/"
 
 class StoreApiJP {
     companion object {
+        private const val JP_STORE_URL = "https://search.nintendo.jp/nintendo_soft/search.json"
+        const val JP_PRODUCT_URL = "https://store-jp.nintendo.com/list/software/"
+
         @OptIn(ExperimentalSerializationApi::class)
         suspend fun fetchGames(maxPages: Int = Integer.MAX_VALUE): List<Game> {
             println("JP store fetch games started")
@@ -82,31 +82,4 @@ class StoreApiJP {
             return gamesResult
         }
     }
-}
-
-@Serializable
-data class JpStoreResponseDto(val result: JpStoreResultDto)
-
-@Serializable
-data class JpStoreResultDto(val items: List<JpGameDto>)
-
-@Serializable
-data class JpGameDto(
-    val title: String,
-    @SerialName("text") val description: String?,
-    @SerialName("nsuid") val nsuid: String?,
-    val hard: String?,
-    val icode: String?,
-    val player: List<String>?,  // ["1~2"]
-    @SerialName("genre") val categories: List<String>?,  // ["アーケード","アクション","アドベンチャー","その他"]
-    @SerialName("lang") val languages: List<String>?,   //  "lang": [ "ja", "pt_US", "en_US" ],
-) {
-    //    https://store-jp.nintendo.com/list/software/70010000057801.html
-    val storeUrl: String?
-        get() {
-            return if (nsuid == null) null
-            else "$JP_PRODUCT_URL${nsuid}.html"
-        }
-
-
 }
