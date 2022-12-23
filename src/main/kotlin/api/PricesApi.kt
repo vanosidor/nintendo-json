@@ -43,9 +43,9 @@ class PricesApi {
 
                 install(HttpRequestRetry) // 3 retries by default and exponential
 
-                install(Logging) {
-                    level = LogLevel.BODY
-                }
+//                install(Logging) {
+//                    level = LogLevel.BODY
+//                }
             }
 
             val rowCount = 50
