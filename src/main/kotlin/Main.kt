@@ -156,7 +156,7 @@ private fun mergeGames(
             jpGamesCopy.remove(jpGame)
             naGamesCopy.remove(naGame)
 
-            result.add(GameMerged(naGame, euGame, jpGame))
+            result.add(GameMerged(naGame = naGame, euGame = euGame, jpGame = jpGame))
         } else {
             result.add(GameMerged(euGame = euGame))
         }
