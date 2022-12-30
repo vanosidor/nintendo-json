@@ -6,15 +6,6 @@ import entities.Price
 import entities.StoreCountry
 import java.io.File
 
-// TODO move to readme
-// https://github.com/fedecalendino/nintendeals
-// https://github.com/fedecalendino/nintendeals/blob/main/nintendeals/commons/classes/eshops.py
-
-// https://gist.github.com/GabrielMMelo/b88f3d4d68a8883f17f1c3300e58a23f
-
-// too old api
-// https://github.com/briansamuel/eshop-game
-
 suspend fun main() {
     val games = fetchAllGames()
 
@@ -43,6 +34,11 @@ suspend fun fetchAllGames(): List<GameMerged> {
     val hkGames = getHkGames()
 
     val games = mergeGames(euGames, jpGames, naGames, hkGames)
+
+//    TODO need test
+//    70010000000026 legend of zelda HACAAAAA 7678.0
+//    70070000000883 HACAAAAC 10225.0
+//    eu store HACPAAAAA
     println("Fetch all games task completed: elapsed time = ${System.currentTimeMillis() - startTime}ms, games count = ${games.size}")
     println()
     return games

@@ -8,7 +8,7 @@ data class JpStoreResponseDto(val result: JpStoreResultDto)
 @Serializable
 data class JpStoreResultDto(val items: List<GameJP>)
 
-@kotlinx.serialization.Serializable
+@Serializable
 data class GameJP(
     val title: String?,
     @SerialName("text") val description: String?,
@@ -16,6 +16,7 @@ data class GameJP(
     val hard: String?,
     val icode: String?,
     val player: List<String>?,  // ["1~2"]
+    val sform: String?,
     @SerialName("genre") val categories: List<String>?,  // ["アーケード","アクション","アドベンチャー","その他"]
     @SerialName("lang") val languages: List<String>?,   //  "lang": [ "ja", "pt_US", "en_US" ],
 ) {

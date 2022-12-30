@@ -1,0 +1,15 @@
+null
+DLC
+HAC_DL
+DL_DLC
+HAC_DOWNLOADABLE
+HAC_MD
+HAC_CARD
+HAC_N64
+accessory
+hard
+HAC_FC/NES
+HAC_SFC/SNES
+hard-soft
+set
+dl_only

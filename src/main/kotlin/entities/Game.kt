@@ -125,15 +125,15 @@ data class Game(
         get() {
             if (productCode.isEmpty() || productCode == "WUPWUP") return null
 
-            try {
-                return when (regionCode) {
+            return try {
+                when (regionCode) {
                     RegionCode.JP -> productCode.substring(3..6)
                     RegionCode.EU, RegionCode.NA -> productCode.substring(4..7)
                     RegionCode.HK -> null
                 }
             } catch (e: StringIndexOutOfBoundsException) {
                 println("Get uniqueId invalid product code string length: $productCode")
-                return null
+                null
             }
         }
 }

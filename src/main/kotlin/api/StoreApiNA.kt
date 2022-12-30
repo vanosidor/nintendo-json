@@ -4,11 +4,12 @@ import GameExtras
 import GameNA
 import PropsDto
 import com.algolia.search.client.ClientSearch
-import com.algolia.search.dsl.requestOptions
+import com.algolia.search.dsl.query
 import com.algolia.search.model.APIKey
 import com.algolia.search.model.ApplicationID
+import com.algolia.search.model.Attribute
 import com.algolia.search.model.IndexName
-import com.algolia.search.model.search.Query
+import com.algolia.search.model.search.QueryType
 import entities.Game
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromString
@@ -21,11 +22,10 @@ import org.jsoup.nodes.Document
 class StoreApiNA {
 
     companion object {
-
         // TODO create new APP_ID and api.API_KEY
         private const val APPLICATION_ID = "U3B6GR4UA3"
         private const val API_KEY = "c4da8be7fd29f0f5bfa42920b0a99dc7"
-        private const val INDEX = "ncom_game_en_us"
+        private const val INDEX_NAME = "ncom_game_en_us"
         private const val PLATFORM_CODE = "7001"
 
         @OptIn(ExperimentalSerializationApi::class)
@@ -45,15 +45,7 @@ class StoreApiNA {
                 apiKey = APIKey(API_KEY)
             )
 
-            val index = client.initIndex(indexName = IndexName(INDEX))
-
-            val requestOptions = requestOptions {
-                header("allowTyposOnNumericTokens", false)
-                header("queryType", "prefixAll")
-                header("restrictSearchableAttributes", listOf("nsuid"))
-                header("facetFilters", listOf("platform:Nintendo Switch"))
-                header("hitsPerPage", 500)
-            }
+            val index = client.initIndex(indexName = IndexName(INDEX_NAME))
 
             var current = 0
             var emptyPages = 0
@@ -62,8 +54,18 @@ class StoreApiNA {
             while (true) {
                 println("Current page = $current")
                 val currentFormatted: String = "%07d".format(current)
+
+                val query = query {
+                    query = "$PLATFORM_CODE$currentFormatted"
+                    hitsPerPage = 500
+                    allowTyposOnNumericTokens = false
+                    facetFilters = listOf(listOf("platform:Nintendo Switch"))
+                    queryType = QueryType.PrefixAll
+                    restrictSearchableAttributes = listOf(Attribute("nsuid"))
+                }
+
                 val responseSearch =
-                    index.search(Query("$PLATFORM_CODE$currentFormatted"), requestOptions = requestOptions)
+                    index.search(query)
 
                 val games = responseSearch.hits.map {
                     json.decodeFromJsonElement<GameNA>(it.json)
@@ -72,6 +74,7 @@ class StoreApiNA {
                 if (games.isEmpty()) {
                     emptyPages++
                 } else {
+                    emptyPages = 0
                     for (gameDto in games) {
                         val extras = extractGameExtras(gameDto.storeUrl)
 
@@ -96,7 +99,6 @@ class StoreApiNA {
 
             println("Successful scraps $successScraps, total items ${gamesResult.size}")
             println("NA store games fetched\n")
-
 
             return gamesResult
         }

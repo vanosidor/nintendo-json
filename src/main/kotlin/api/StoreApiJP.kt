@@ -17,6 +17,7 @@ class StoreApiJP {
     companion object {
         private const val JP_STORE_URL = "https://search.nintendo.jp/nintendo_soft/search.json"
         const val JP_PRODUCT_URL = "https://store-jp.nintendo.com/list/software/"
+        private const val HARD = "1_HAC"
 
         @OptIn(ExperimentalSerializationApi::class)
         suspend fun fetchGames(maxPages: Int = Integer.MAX_VALUE): List<Game> {
@@ -47,6 +48,7 @@ class StoreApiJP {
                         parameters.apply {
                             append("limit", limit.toString())
                             append("page", page.toString())
+                            append("opt_hard", HARD)
                         }
                     }
                 }
