@@ -33,12 +33,11 @@ suspend fun fetchAllGames(): List<GameMerged> {
     val naGames = getNaGames()
     val hkGames = getHkGames()
 
-    val games = mergeGames(euGames, jpGames, naGames, hkGames)
+    val games = mergeGames(euGames = euGames, jpGames = jpGames, naGames = naGames, hkGames = hkGames)
 
-//    TODO need test
 //    70010000000026 legend of zelda HACAAAAA 7678.0
 //    70070000000883 HACAAAAC 10225.0
-//    eu store HACPAAAAA
+//    eu store HACPAAAAA 70010000000023
     println("Fetch all games task completed: elapsed time = ${System.currentTimeMillis() - startTime}ms, games count = ${games.size}")
     println()
     return games
@@ -140,13 +139,16 @@ private fun mergeGames(
     val startTime = System.currentTimeMillis()
 
     val result = arrayListOf<GameMerged>()
+
     val naGamesCopy = naGames.toMutableList()
     val jpGamesCopy = jpGames.toMutableList()
 
     for (euGame in euGames) {
         val euGameId = euGame.uniqueId
         if (euGameId != null) {
-            val jpGame = jpGamesCopy.firstOrNull { it.uniqueId == euGameId }
+
+            val jpGame = jpGamesCopy.firstOrNull { it.uniqueId == euGameId && it.type == euGame.type }
+
             val naGame = naGamesCopy.firstOrNull { it.uniqueId == euGameId }
 
             jpGamesCopy.remove(jpGame)

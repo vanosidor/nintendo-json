@@ -119,7 +119,7 @@ class StoreApiEU {
 
                 if (newItems.isEmpty()) break
 
-                val newItemsFiltered = newItems.filter { it.type == "GAME" }
+                val newItemsFiltered = newItems.filter { it.type == "GAME" || it.type == "DLC" }
 
                 gamesResult.addAll(newItemsFiltered.mapIndexed { index, game ->
                     Game.fromEuDto(

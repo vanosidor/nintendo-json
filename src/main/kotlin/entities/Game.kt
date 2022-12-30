@@ -20,10 +20,17 @@ data class Game(
     val categories: List<String>,
     val prices: List<Price>,
     val popularity: Int = 0,
+    val type: GameType? = null
 ) {
     companion object Factory {
         fun fromEuDto(euGame: GameEU, popularity: Int = 0): Game {
             val languages: List<String> = euGame.languages?.firstOrNull()?.split(",") ?: emptyList()
+
+            val type = when (euGame.type) {
+                "GAME" -> GameType.GAME
+                "DLC" -> GameType.DLC
+                else -> null
+            }
 
             return Game(
                 title = euGame.title ?: "",
@@ -38,7 +45,8 @@ data class Game(
                 languages = languages,
                 categories = euGame.categories ?: emptyList(),
                 prices = emptyList(),
-                popularity = popularity
+                popularity = popularity,
+                type = type
             )
         }
 
@@ -57,6 +65,12 @@ data class Game(
 //            TODO fix 70010000012085K
             val nsuid = jpGame.nsuid?.replace("_", "") ?: "" // contains invalid nsuid 70010000039949_2
 
+            val type = when (jpGame.sform) {
+                "DLC", "DL_DLC", "dl_only" -> GameType.DLC
+                "HAC_DOWNLOADABLE", "HAC_DL" -> GameType.GAME
+                else -> null
+            }
+
             return Game(
                 title = jpGame.title ?: "",
                 description = jpGame.description ?: "",
@@ -69,7 +83,8 @@ data class Game(
                 imageUrl2x1 = "",
                 languages = jpGame.languages ?: emptyList(),
                 categories = jpGame.categories ?: emptyList(),
-                prices = emptyList()
+                prices = emptyList(),
+                type = type
             )
         }
 
@@ -138,3 +153,6 @@ data class Game(
         }
 }
 
+enum class GameType {
+    GAME, DLC
+}
